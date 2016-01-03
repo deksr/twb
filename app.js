@@ -42,7 +42,9 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 
-// note: not using jade 
+
+
+// note: not using ejs or jade as templates
 // app.set('view engine', 'ejs');
 // I'm setting html as template
 
