@@ -9,17 +9,10 @@ router.get('/', function(req, res) {
 
 
 router.get('/blooms', function(req, res) {
-	console.log("got a request for blooms")
-var pethotel = [{
-		petname: "Dog",
-		ownername: "Mary"
-	},
-	{
-    petname: "Cat",
-    ownername: "Jane"
-	}]
-  res.json(pethotel)
-   })
+  Item.find({}).exec(function(err, items) {
+    res.json(items);
+  });
+});
 
 
 module.exports = router;
