@@ -14,6 +14,17 @@ router.get('/blooms', function(req, res) {
   });
 });
 
+router.post('/blooms', function(req, res) {
+  console.log(req.body);
+
+	Item.create(req.body, function(err, item) {
+	    // res.render('items/index', {posts: posts})
+	    console.log("back from db")
+	    console.log(item)
+	    res.json(item)
+  });
+
+});
 
 module.exports = router;
 
