@@ -4,13 +4,18 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
-
 </head>
+
 <body ng-controller="ajscontroller">
-<i> {{title}} </i>
+<i> {{title}} </i> <br> <br>
+<div ng-repeat="pet in pethotel">
+	   Pet: {{pet.petname}} <br>
+	 	 Owner Name: {{pet.ownername}}<br> <br>
+</div>
 
-<script src="/javascripts/angular.js"></script>
-<script src="/javascripts/rough.js"></script>
-
+<script src="/javascripts/angular.js"> </script>
+<script src="/javascripts/rough.js"> </script>
 </body>
 </html>
+
+

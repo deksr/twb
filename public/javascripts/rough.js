@@ -2,14 +2,14 @@ console.log("rough.js");
 
 var myapp = angular.module('ajs', [])
 
-// myapp.controller('trycontroller', function($scope){
-//   $scope.title = "hello from the other side "
-// });
-
 myapp.controller('ajscontroller', function($scope, $http){
-  $scope.title = "hello";
+  $scope.title = "Pet Hotel";
 
-  $http.get('/items')
+  $http.get('/items/blooms').then(function(response) {
+  	console.log("got data")
+    console.log(response.data)
+    $scope.pethotel = response.data;
+  })
 });
 
 
