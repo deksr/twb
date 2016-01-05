@@ -36,6 +36,17 @@ myapp.controller('ajscontroller', function($scope, $http){
   	})
   }
 
+  $scope.edititem =  function(oid){
+  console.log("edit me");
+  console.log(oid)
+  $http.get('/items/blooms/' + oid).then(function(response){
+  console.log("do this job")
+  console.log(response)
+  $scope.itemyo = response.data
+  // pageload()
+  })
+  }
+
 
 });
 

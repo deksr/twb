@@ -41,6 +41,16 @@ router.delete('/blooms/:id', function(req, res) {
   })
 });
 
+router.get('/blooms/:id', function(req, res) {
+  console.log("update me")
+  console.log(req.params.id);
+  Item.findById(req.params.id, function(err, item){
+  console.log("first things first")
+  console.log(item)
+  res.json(item)
+  })
+  });
+
 
 module.exports = router;
 
