@@ -11,11 +11,13 @@
 
 <input ng-model="itemyo.body"> 
 <input ng-model= "itemyo.tagline">
-<button ng-click="additem()">add the item</button>
+<button ng-click="additem()">add the item</button> <br> <br>
 
 <div ng-repeat="m in messa">
 	   Message: {{m.body}} <br>
 	   AnotherMessage: {{m.tagline}}
+	   <button ng-click="removeitem(m._id)"> Remove </button>
+
 </div>
 
 <script src="/javascripts/angular.js"> </script>

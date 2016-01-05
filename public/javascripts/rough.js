@@ -8,7 +8,7 @@ myapp.controller('ajscontroller', function($scope, $http){
 
 	var pageload= function(){
 		$http.get('/items/blooms').then(function(response) {
-	  	console.log("got get data")
+	  	console.log("data got")
 	    console.log(response.data)
 	    $scope.messa = response.data;
 	  })
@@ -22,11 +22,20 @@ myapp.controller('ajscontroller', function($scope, $http){
     $http.post('/items/blooms', $scope.itemyo).then(function(response){
     	// $scope.itemyo = {}; this clears the input box
       $scope.itemyo = {}; 
-      console.log("got the post data")
+      console.log("ok post")
       console.log(response.data)
       pageload();
     })
   }
+
+  $scope.removeitem =  function(oid){
+  	console.log("will you remove");
+  	console.log(oid)
+  	$http.delete('/items/blooms/' + oid).then(function(response){
+  		pageload()
+  	})
+  }
+
 
 });
 
