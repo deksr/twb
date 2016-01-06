@@ -11,13 +11,25 @@
 
 <input ng-model="itemyo.body"> 
 <input ng-model= "itemyo.tagline">
-<button ng-click="additem()">add the item</button> <br> <br>
+<button ng-click="additem()" ng-disabled="hilbutton && hilbutton != '{{editid}}'">add the item</button> <br> <br>
+*********************************************
 
 <div ng-repeat="m in messa">
-	   Message: {{m.body}} <br>
-	   AnotherMessage: {{m.tagline}}
-	   <button ng-click="removeitem(m._id)"> Remove </button>
-	   <button ng-click="edititem(m._id)"> Edit </button> <br> <br>
+	<span ng-hide= "showdetails" >
+	Message: {{m.body}}
+	AnotherMessage: {{m.tagline}}
+	<button ng-click="removeitem(m._id)" ng-disabled="hilbutton && hilbutton != '{{editid}}'"> Remove </button>
+	<button ng-click="edititem(m._id); showdetails = !showdetails; highlight(m._id)" ng-disabled="hilbutton && hilbutton != '{{editid}}'"> Edit </button> 
+</span>
+	<br> <br>
+
+	<span>
+		<input ng-show="showdetails"  ng-model="beyonce.body"> 
+		<input ng-show="showdetails"  ng-model= "beyonce.tagline">
+		<button ng-show="showdetails"  ng-click="update()"> Update </button> 
+	</span>
+
+	   
 </div>
 
 <script src="/javascripts/angular.js"> </script>

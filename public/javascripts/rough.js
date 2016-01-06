@@ -37,16 +37,39 @@ myapp.controller('ajscontroller', function($scope, $http){
   }
 
   $scope.edititem =  function(oid){
-  console.log("edit me");
-  console.log(oid)
-  $http.get('/items/blooms/' + oid).then(function(response){
-  console.log("do this job")
-  console.log(response)
-  $scope.itemyo = response.data
-  // pageload()
-  })
+    console.log("edit me");
+    console.log(oid)
+    $http.get('/items/blooms/' + oid).then(function(response){
+      console.log("do this job")
+      console.log(response)
+      // $scope.itemyo = response.data
+      // pageload()
+      //  from here **********sjdhksjhd************
+
+      $scope.fulldbobject = response.data
+      console.log(response.data)
+
+      console.log("from database for editing: ")
+      $scope.editid = response.data._id
+      // $scope.editbody = response.data.body
+      // $scope.edittagline = response.data.tagline
+      $scope.beyonce = response.data
+      $scope.showdetail= true;
+    })
+
+    $scope.highlight = function(oid){
+      console.log("puppy: "+ oid)
+      $scope.hilbutton = oid
+    }
   }
 
+  $scope.update  =  function(){
+    console.log("edited");
+    console.log("beyonce :" + $scope.fulldbobject._id); 
+    $http.put('/items/blooms/' + $scope.fulldbobject._id, $scope.beyonce).then(function(response){
+      pageload()
+    })
+  }
 
 });
 

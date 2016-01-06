@@ -8,6 +8,7 @@ router.get('/', function(req, res) {
 });
 
 
+// for getting data
 router.get('/blooms', function(req, res) {
 	console.log("get items")
   Item.find({}).exec(function(err, items) {
@@ -16,7 +17,7 @@ router.get('/blooms', function(req, res) {
 });
 
 
-
+// for posting data
 router.post('/blooms', function(req, res) {
 	console.log("posting");
   console.log(req.body);
@@ -28,7 +29,7 @@ router.post('/blooms', function(req, res) {
 });
 
 
-
+// for deleting data
 router.delete('/blooms/:id', function(req, res) {
 	console.log("please delete ")
 	// var id = req.params.id
@@ -41,6 +42,9 @@ router.delete('/blooms/:id', function(req, res) {
   })
 });
 
+
+
+// for editing and updating data
 router.get('/blooms/:id', function(req, res) {
   console.log("update me")
   console.log(req.params.id);
@@ -49,7 +53,28 @@ router.get('/blooms/:id', function(req, res) {
   console.log(item)
   res.json(item)
   })
-  });
+});
+
+router.put('/blooms/:id', function(req, res) {
+  console.log("update please")
+  console.log(req.params.id);
+  console.log(req.body.body);
+  console.log(req.body.tagline);
+  Item.findById(req.params.id, function(err, item) {
+    item.body = req.body.body;
+    item.tagline = req.body.tagline;
+    item.save(function(err) {
+      if (err){
+        console.log(err);
+      } 
+      else {
+        console.log("fin")
+        res.json(item)
+      }
+    })
+  })
+
+});
 
 
 module.exports = router;
