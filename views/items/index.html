@@ -7,29 +7,31 @@
 </head>
 
 <body ng-controller="ajscontroller">
-<i> {{title}} </i> <br> <br>
+	<i> {{title}} </i> <br> <br>
 
-<input ng-model="itemyo.body"> 
-<input ng-model= "itemyo.tagline">
-<button ng-click="additem()" ng-disabled="hilbutton && hilbutton != '{{editid}}'">add the item</button> <br> <br>
-*********************************************
+	<input ng-model="itemInputBox.body"> 
+	<input ng-model= "itemInputBox.tagline">
+	<button ng-click="additem()" > Add </button> <br> <br>
+  <hr>
 
-<div ng-repeat="m in messa">
+
+<div ng-repeat="item in itemslist">
 	<span ng-hide= "showdetails" >
-	Message: {{m.body}}
-	AnotherMessage: {{m.tagline}}
-	<button ng-click="removeitem(m._id)" ng-disabled="hilbutton && hilbutton != '{{editid}}'"> Remove </button>
-	<button ng-click="edititem(m._id); showdetails = !showdetails; highlight(m._id)" ng-disabled="hilbutton && hilbutton != '{{editid}}'"> Edit </button> 
-</span>
+		<p> First: {{item.body}} </p>
+		<p> Second: {{item.tagline}} </p>
+
+		<button ng-click="removeitem(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Delete </button>
+
+		<button ng-click="edititem(item._id); showdetails = !showdetails; highlight(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Edit </button> 
+	</span>
+
 	<br> <br>
 
 	<span>
-		<input ng-show="showdetails"  ng-model="beyonce.body"> 
-		<input ng-show="showdetails"  ng-model= "beyonce.tagline">
+		<input ng-show="showdetails"  ng-model="itemEditBox.body"> 
+		<input ng-show="showdetails"  ng-model= "itemEditBox.tagline">
 		<button ng-show="showdetails"  ng-click="update()"> Update </button> 
-	</span>
-
-	   
+	</span> 
 </div>
 
 <script src="/javascripts/angular.js"> </script>

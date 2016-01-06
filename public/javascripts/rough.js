@@ -3,70 +3,59 @@ console.log("rough.js");
 var myapp = angular.module('ajs', [])
 
 myapp.controller('ajscontroller', function($scope, $http){
-  $scope.title = "hello";
+  $scope.title = "We are all diamonds taking shape";
 
 
 	var pageload= function(){
+   // get request
 		$http.get('/items/blooms').then(function(response) {
-	  	console.log("data got")
-	    console.log(response.data)
-	    $scope.messa = response.data;
+	    // console.log(response.data)
+	    $scope.itemslist = response.data;
 	  })
 	}
   
-
 	pageload();
 
+
+  // post request
   $scope.additem =  function(){
-    console.log($scope.itemyo);
-    $http.post('/items/blooms', $scope.itemyo).then(function(response){
-    	// $scope.itemyo = {}; this clears the input box
-      $scope.itemyo = {}; 
-      console.log("ok post")
-      console.log(response.data)
+    console.log($scope.itemInputBox);
+    $http.post('/items/blooms', $scope.itemInputBox).then(function(response){
+      $scope.itemInputBox = {}; 
+      // console.log(response.data)
       pageload();
     })
   }
 
+  // delete request
   $scope.removeitem =  function(oid){
-  	console.log("will you remove");
-  	console.log(oid)
+  	// console.log(oid)
   	$http.delete('/items/blooms/' + oid).then(function(response){
   		pageload()
   	})
   }
 
+  // edit request
   $scope.edititem =  function(oid){
-    console.log("edit me");
-    console.log(oid)
+    // console.log(oid)
     $http.get('/items/blooms/' + oid).then(function(response){
-      console.log("do this job")
-      console.log(response)
-      // $scope.itemyo = response.data
-      // pageload()
-      //  from here **********sjdhksjhd************
-
-      $scope.fulldbobject = response.data
-      console.log(response.data)
-
-      console.log("from database for editing: ")
-      $scope.editid = response.data._id
-      // $scope.editbody = response.data.body
-      // $scope.edittagline = response.data.tagline
-      $scope.beyonce = response.data
+      // console.log(response)
+      // console.log(response.data)
+      $scope.fulldbobject = response.data //save one object in scope for sending back to server an id later
+      $scope.editdataid = response.data._id
+      $scope.itemEditBox = response.data
       $scope.showdetail= true;
     })
 
     $scope.highlight = function(oid){
-      console.log("puppy: "+ oid)
-      $scope.hilbutton = oid
+      // console.log(oid)
+      $scope.highlightbutton = oid
     }
   }
 
   $scope.update  =  function(){
-    console.log("edited");
-    console.log("beyonce :" + $scope.fulldbobject._id); 
-    $http.put('/items/blooms/' + $scope.fulldbobject._id, $scope.beyonce).then(function(response){
+    // console.log($scope.fulldbobject._id); 
+    $http.put('/items/blooms/' + $scope.fulldbobject._id, $scope.itemEditBox).then(function(response){
       pageload()
     })
   }
