@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
-
+// var engines = require('consolidate'); 
 
 
 var mongoose = require('mongoose');
@@ -30,6 +30,8 @@ console.log('connection established :sweet)');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var items = require('./routes/items');
+var posts = require('./routes/posts');
+
 
 
 
@@ -40,10 +42,10 @@ var items = require('./routes/items');
 
 var app = express();
 
+
+// *********** dont touch below
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-
-
 
 // note: not using ejs or jade as templates
 // app.set('view engine', 'ejs');
@@ -51,6 +53,26 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
+
+// *********don't touch above
+
+
+
+// *****8 above or this **8
+
+app.set('views', path.join(__dirname, 'views'));
+app.engine('.html', require('ejs').__express);
+app.set('view engine', 'html');
+
+
+// *********
+
+
+
+
+
+
+
 
 
 // uncomment after placing your favicon in /public
@@ -76,6 +98,8 @@ app.use(methodOverride(function(req, res) {
 app.use('/', routes);
 app.use('/users', users);
 app.use('/items', items);
+app.use('/posts', posts);
+
 
 
 
