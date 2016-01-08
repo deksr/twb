@@ -4,11 +4,13 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
+// methodoverride
 var methodOverride = require('method-override');
 
-// var engines = require('consolidate'); 
 
 
+// mongoose for mongodb
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/twb');
 var db = mongoose.connection;
@@ -31,9 +33,6 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var items = require('./routes/items');
 var posts = require('./routes/posts');
-
-
-
 
 
 
@@ -72,9 +71,6 @@ app.set('view engine', 'html');
 
 
 
-
-
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -84,6 +80,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+
+// methodOverride
 app.use(methodOverride(function(req, res) {
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
     // look in urlencoded POST bodies and delete it
@@ -92,6 +90,8 @@ app.use(methodOverride(function(req, res) {
     return method
   }
 }));
+
+
 
 
 

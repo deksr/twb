@@ -1,4 +1,4 @@
-console.log("for ajax")
+console.log("jax")
 
 $(document).ready(function() { 
 	$('.imageform').on('submit', function(){
@@ -39,6 +39,5 @@ $(document).ready(function() {
 		})
 		$(this).ajaxStop(function(){ window.location.reload(); });
 	})
-
 
 

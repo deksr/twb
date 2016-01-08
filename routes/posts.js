@@ -13,14 +13,17 @@ router.get('/', function(req, res) {
 });
 
 
+
+
 // for posting data
+
 router.post('/jupiter', function(req, res) {
-  // console.log(req.body);
-  Post.create(req.body, function(err, post) {
-      // console.log(post)
-      res.json(post)
-  });
+ // console.log(req.body);
+ Post.create(req.body, function(err, post) {
+ // console.log(post)
+res.json(post)
 });
+})
 
 
 
