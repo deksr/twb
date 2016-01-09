@@ -13,10 +13,7 @@ router.get('/', function(req, res) {
 });
 
 
-
-
 // for posting data
-
 router.post('/jupiter', function(req, res) {
  // console.log(req.body);
  Post.create(req.body, function(err, post) {
@@ -25,6 +22,12 @@ res.json(post)
 });
 })
 
+// for deleting data
+router.delete('/:id', function(req, res) {
+	Post.findByIdAndRemove(req.params.id, function(err) {
+	  res.redirect('/posts');
+	})
+});
 
 
 module.exports = router;

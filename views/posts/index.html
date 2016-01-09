@@ -12,15 +12,36 @@
 <% include new.html %>
 </div>
 
-
 <% posts.forEach( function(post) { %>
-<p><%= post.postname %></p>
-</div>
+
+<form name="deletepost" action="/posts/<%=post.id%>" method="post"> 
+<p><%= post._id %> </p>
+<p><%= post.postname %> </p> 
+<input type="hidden" name="_method" value="delete">
+<button type= "submit" class="deleteme"> Delete </button>
+</form>
+<hr>
 <% }) %>
+
+<!-- 
+<li>
+  <form role="form" name="deletepost" action="/posts/<%#=post.id%>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <a href="#" onclick="document.deletepost.submit(); return false;" class="text-danger">Delete</a>
+    <noscript><button type="submit" class="btn btn-default text-danger">Delete</button></noscript>
+  </form>
+</li>
+ -->
+
+
+
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
 
 <script src="../javascripts/jaxing.js"> </script>
+
+<script src="../javascripts/dyform.js"> </script>
+
 
 </body>
 </html>
