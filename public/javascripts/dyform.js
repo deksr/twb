@@ -1,5 +1,8 @@
-console.log("dyform")
+console.log("dyform.js")
 
-$(document).ready(function() { 
-	console.log("ok")
-})
+
+var isay = function(){
+console.log("stop beating around the bush. This is not working with define(modulename)")
+}
+
+

@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
-
+	<link rel="stylesheet" href="../stylesheets/style.css">
 </head>
 <body>
 
@@ -12,35 +12,32 @@
 <% include new.html %>
 </div>
 
-<% posts.forEach( function(post) { %>
 
-<form name="deletepost" action="/posts/<%=post.id%>" method="post"> 
-<p><%= post._id %> </p>
+<% posts.forEach( function(post) { %>
+<form name="deletepost" action="/posts/<%=post.id%>" method="post"  > 
+<div class="postit" id="draggable">
 <p><%= post.postname %> </p> 
 <input type="hidden" name="_method" value="delete">
 <button type= "submit" class="deleteme"> Delete </button>
+</div>
 </form>
 <hr>
 <% }) %>
 
-<!-- 
-<li>
-  <form role="form" name="deletepost" action="/posts/<%#=post.id%>" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <a href="#" onclick="document.deletepost.submit(); return false;" class="text-danger">Delete</a>
-    <noscript><button type="submit" class="btn btn-default text-danger">Delete</button></noscript>
-  </form>
-</li>
- -->
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script> 
 
-
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"> </script> 
+	
 <script src="../javascripts/jaxing.js"> </script>
 
-<script src="../javascripts/dyform.js"> </script>
+<script src="../javascripts/handlebars.js"> </script>
+
+
+<!--< <script src="../javascripts/dyform.js"> </script>  
+
+<script data-main="../javascripts/main.js" src="../javascripts/require.js"> </script> //-->
+
 
 
 </body>

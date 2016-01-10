@@ -6,3 +6,9 @@ body {
 a {
   color: #00B7FF;
 }
+
+.postit{
+	background-color: yellow;
+	height: 200px;
+	width: 200px;
+}

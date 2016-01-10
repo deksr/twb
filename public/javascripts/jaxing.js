@@ -1,7 +1,7 @@
-console.log("jax")
+console.log("jaxing.js")
+
 
 $(document).ready(function() { 
-
 
 	$('.imageform').on('submit', function(){
     var form = $(this);
@@ -26,13 +26,28 @@ $(document).ready(function() {
 			data: data
 		})
 		.done(function(html) {
-			console.log("success");
+			console.log("success in posting");
+				$.ajax({
+					url: '/posts/doublejax',
+					type: 'GET',
+					dataType: 'JSON',
+				})
+				.done(function(response) {
+					console.log("success in getting");
+					console.log(response);
+				})
+				.fail(function() {
+					console.log("error in getting");
+				})
+				.always(function() {
+					console.log("completed getting");
+				});	
 		})
 		.fail(function() {
-			console.log("error");
+			console.log("error in posting");
 		})
 		.always(function() {
-			console.log("complete");
+			console.log("completed posting");
 		});
 
 	   console.log(data)
@@ -45,5 +60,9 @@ $(document).ready(function() {
 	})
 
 })
+
+
+
+
 
 

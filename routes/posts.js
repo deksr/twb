@@ -13,6 +13,8 @@ router.get('/', function(req, res) {
 });
 
 
+
+
 // for posting data
 router.post('/jupiter', function(req, res) {
  // console.log(req.body);
@@ -29,5 +31,13 @@ router.delete('/:id', function(req, res) {
 	})
 });
 
+
+router.get('/doublejax', function(req, res) {
+  Post.find({}).exec(function(err, posts) {
+      res.json(posts)
+      //below code works if you are sending through sendfile
+       // res.sendFile('/views/posts/index.html', {posts: posts}); 
+  });
+});
 
 module.exports = router;

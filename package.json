@@ -12,6 +12,7 @@
     "debug": "~2.2.0",
     "ejs": "~2.3.3",
     "express": "~4.13.1",
+    "handlebars": "^4.0.5",
     "html": "0.0.10",
     "method-override": "^2.3.5",
     "mongoose": "^4.3.4",
