@@ -4,14 +4,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var haba = require('handlebars');
 
 // methodoverride
 var methodOverride = require('method-override');
 
-
-
-
+// added favicon for favicon error
+var favicon = require('serve-favicon');
 
 // mongoose for mongodb
 var mongoose = require('mongoose');
@@ -30,8 +28,6 @@ console.log('connection established :sweet)');
 
 
 
-
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var items = require('./routes/items');
@@ -39,10 +35,11 @@ var posts = require('./routes/posts');
 
 
 
-
-
-
+// *****************
 var app = express();
+
+// added favicons in the images directory //? remove this in production? 
+app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
 
 
 // *********** dont touch below

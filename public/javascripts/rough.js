@@ -62,4 +62,29 @@ myapp.controller('ajscontroller', function($scope, $http){
 
 });
 
+// ***************seacrhcontroller*******************************************
+myapp.controller('searchcontroller', function($scope, $http){
+  console.log("from searchcontroller")
+
+  $scope.controllermessage = "from search controller welcome"
+
+  $scope.searchme =  function(){
+    // console.log($scope.searchbox.term);
+    $http.get('/posts/search?', {params:{"postname":$scope.searchbox.postname}}).then(function(response){
+      console.log(response)
+      $scope.searchresults = response.data
+      // $scope.searchbox = {}; 
+    })
+  }
+
+
+  $scope.justry =  function(){
+    // console.log($scope.searchbox.term);
+   $http.get('/items/blooms').then(function(response) {
+      console.log(response.data)
+      $scope.tryme = response.data;
+    })
+  }
+})
+
 

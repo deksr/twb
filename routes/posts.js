@@ -40,4 +40,15 @@ router.get('/doublejax', function(req, res) {
   });
 });
 
+
+// forsearch  ***************************
+
+router.get('/search?/', function(req, res) {
+  console.log("??")
+  console.log(req.query.postname)
+  Post.find({postname: new RegExp(req.query.postname, "i")},function(err, posts) {
+      res.json(posts) 
+  });
+});
+
 module.exports = router;

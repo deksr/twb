@@ -35,6 +35,7 @@ $(document).ready(function() {
 				.done(function(response) {
 					console.log("success in getting");
 					console.log(response);
+					//bookmark-come back later
 				})
 				.fail(function() {
 					console.log("error in getting");
@@ -53,7 +54,7 @@ $(document).ready(function() {
 	   console.log(data)
 		 return false; 
 	})
-		$(this).ajaxStop(function(){ window.location.reload(); });
+		// $(this).ajaxStop(function(){ window.location.reload(); });
 
 	$('.deleteme').on('click', function(){ 
    alert("Are you sure?")

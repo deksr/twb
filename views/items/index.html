@@ -5,8 +5,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
 </head>
+<body>
 
-<body ng-controller="ajscontroller">
+<div ng-controller="ajscontroller">
 	<i> {{title}} </i> <br> <br>
 
 	<input ng-model="itemInputBox.body"> 
@@ -34,25 +35,38 @@
 	</span> 
 </div>
 
+
+</div>
+
+**************************
+
+<!-- *************searchcontroller*************
+ --><br>
+<div ng-controller='searchcontroller'>
+	<p> {{controllermessage}} </p>
+<p> A search form:  </p> 
+<p> Enter search term: <input ng-model="searchbox.postname" >
+<button ng-click="searchme()" > Add </button> </p><br> <br>
+<div ng-repeat="result in searchresults">
+ 	{{result.postname}}
+</div>
+
+
+<button ng-click="justry()"> just try</button>
+<div ng-repeat="try in tryme">
+ 	{{try.body}}
+</div>
+
+</div>
+
+
 <script src="/javascripts/angular.js"> </script>
 <script src="/javascripts/rough.js"> </script>
 </body>
 </html>
 
 
-<!-- <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
-</head>
-<body>
-<%# items.forEach( function(item) { %>
-<p><%#= item.body %></p>
-</div>
-<%# }) %>
-</body>
-</html> -->
+
+
 
 
