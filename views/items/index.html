@@ -1,63 +1,59 @@
 <!DOCTYPE html>
-<html ng-app="ajs">
+<!-- <html ng-app="ajs">-->
+<html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
+	<link rel="stylesheet" href="../stylesheets/style.css">
 </head>
 <body>
 
-<div ng-controller="ajscontroller">
-	<i> {{title}} </i> <br> <br>
-
-	<input ng-model="itemInputBox.body"> 
-	<input ng-model= "itemInputBox.tagline">
-	<button ng-click="additem()" > Add </button> <br> <br>
-  <hr>
+<div ng-app = "ajs">
+	<div ng-controller="ajscontroller">
+		<i> {{title}} </i> <br> <br>
 
 
-<div ng-repeat="item in itemslist">
-	<span ng-hide= "showdetails" >
-		<p> First: {{item.body}} </p>
-		<p> Second: {{item.tagline}} </p>
-
-		<button ng-click="removeitem(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Delete </button>
-
-		<button ng-click="edititem(item._id); showdetails = !showdetails; highlight(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Edit </button> 
-	</span>
-
-	<br> <br>
-
-	<span>
-		<input ng-show="showdetails"  ng-model="itemEditBox.body"> 
-		<input ng-show="showdetails"  ng-model= "itemEditBox.tagline">
-		<button ng-show="showdetails"  ng-click="update()"> Update </button> 
-	</span> 
-</div>
+		<!-- "search and rememebr me" added ngchange and an added another event for click-->	
+		<input ng-model="itemInputBox.body" ng-change="searchbox.postname = itemInputBox.body"> 
 
 
-</div>
+			<input ng-model= "itemInputBox.tagline">
+			<button ng-click="additem(); searchme()" > Add </button> <br> <br>
+		  <hr>
+<!--  *******3d starts from here*****
+ -->			<div ng-repeat="item in itemslist">
+				<span ng-hide= "showdetails" >
+					<p> First: {{item.body}} </p>
+					<p> Second: {{item.tagline}} </p>
 
-**************************
+					<button ng-click="removeitem(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Delete </button>
 
-<!-- *************searchcontroller*************
- --><br>
-<div ng-controller='searchcontroller'>
-	<p> {{controllermessage}} </p>
-<p> A search form:  </p> 
-<p> Enter search term: <input ng-model="searchbox.postname" >
-<button ng-click="searchme()" > Add </button> </p><br> <br>
-<div ng-repeat="result in searchresults">
- 	{{result.postname}}
-</div>
+					<button ng-click="edititem(item._id); showdetails = !showdetails; highlight(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Edit </button> 
+				</span>
+
+				<br> <br>
+
+				<span>
+					<input ng-show="showdetails"  ng-model="itemEditBox.body"> 
+					<input ng-show="showdetails"  ng-model= "itemEditBox.tagline">
+					<button ng-show="showdetails"  ng-click="update()"> Update </button> 
+				</span> 
+			</div>
+
+			********search experiment
+
+			<p> {{controllermessage}} </p>
 
 
-<button ng-click="justry()"> just try</button>
-<div ng-repeat="try in tryme">
- 	{{try.body}}
-</div>
+		<div ng-repeat="objarray in displayhtml">
+			<div ng-repeat="obj in objarray">
+				{{obj.postname}}
+		  </div>
+		</div>
 
 </div>
+
 
 
 <script src="/javascripts/angular.js"> </script>

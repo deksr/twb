@@ -1,6 +1,27 @@
 console.log("rough.js");
 
 var myapp = angular.module('ajs', [])
+var storeinarray = [];
+
+
+
+
+myapp.filter('unique', function() {
+   return function(collection, keyname) {
+      var output = [], 
+          keys = [];
+
+      angular.forEach(collection, function(tammy) {
+          var key = tammy[keyname];
+          if(keys.indexOf(key) === -1) {
+              keys.push(key);
+              output.push(tammy);
+          }
+      });
+      return output;
+   };
+})
+
 
 myapp.controller('ajscontroller', function($scope, $http){
   $scope.title = "We are all diamonds taking shape";
@@ -60,31 +81,29 @@ myapp.controller('ajscontroller', function($scope, $http){
     })
   }
 
-});
 
-// ***************seacrhcontroller*******************************************
-myapp.controller('searchcontroller', function($scope, $http){
-  console.log("from searchcontroller")
+  // *****************search functionality**************
 
   $scope.controllermessage = "from search controller welcome"
-
   $scope.searchme =  function(){
     // console.log($scope.searchbox.term);
     $http.get('/posts/search?', {params:{"postname":$scope.searchbox.postname}}).then(function(response){
-      console.log(response)
       $scope.searchresults = response.data
-      // $scope.searchbox = {}; 
+      var storeddata = $scope.searchresults
+      storeinarray.push(storeddata)
+      $scope.displayhtml = storeinarray
     })
   }
 
 
   $scope.justry =  function(){
     // console.log($scope.searchbox.term);
-   $http.get('/items/blooms').then(function(response) {
+    $http.get('/items/blooms').then(function(response) {
       console.log(response.data)
       $scope.tryme = response.data;
     })
   }
-})
+
+});
 
 
