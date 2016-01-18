@@ -1,24 +1,104 @@
-body {
+/*body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+}*/
 
 a {
   color: #00B7FF;
 }
 
 
+
 /*jaxload*/
-.postit{
+/*.postit{
 	background-color: yellow;
 	height: 200px;
 	width: 200px;
+}*/
+
+
+/******starts*/
+/*html, body { 
+   height: 100%;
+}*/
+
+.moo{
+  background-color:green;
+  width: 550px;
+  position: relative;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+
+}
+
+.container {
+  width: 350px;
+  height: 350px;
+  border: 1px solid #ccc;
+  background-color:#FFFFC8;
+  perspective: 800px;
+  float:left;
+  position: relative;
 }
 
 
-/**************/
+.card {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transition: transform 1.5s;
+  transform-style: preserve-3d;
+  -webkit-transform-origin: 50% 50%;
+}
+
+.card div {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-size: 40px;
+  position: absolute; /* this flips on the same side */
+  backface-visibility: hidden;
+}
+
+.card .front {
+  background-color: #FFC8E3;
+}
+
+.card .back {
+  background: #D9F3FF;
+  transform: rotateY( 180deg );
+}
+
+.sun {
+  transform: rotateY( 180deg );
+}
+
+.moon {
+  transform: rotateY(0deg );
+}
+
+/******end */
+
+
+
+
+
+
+
+
+/*******below is correct*******/
 
 /*flipequip*/
+/*.moo{
+  float: left;
+  margin: 2px;
+  column-count: 3;
+
+}
 
 .container {
     width: 350px;
@@ -64,3 +144,4 @@ a {
 .moon {
     transform: rotateY(0deg );
 }
+*/
