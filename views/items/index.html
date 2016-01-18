@@ -10,6 +10,7 @@
 <body>
 
 <div ng-app = "ajs">
+
 	<div ng-controller="ajscontroller">
 		<i> {{title}} </i> <br> <br>
 
@@ -20,37 +21,46 @@
 		<hr>
 
     <!--  *******3d starts from here*****-->	
+    <!-- note: there is a problem here. The float works because of an error- moo </div> is not closed and it works. If I comment out the tail of moo then float doesn't line up. What the?  -->
+ 			<div ng-repeat="item in itemslist">
 
-		<div ng-repeat="item in itemslist">
-		<div class="moo"> 
-				<span ng-hide= "showdetails" >
-						<div class="container">
-							<div class="card">
-							  <div class="front">
-							  	<button ng-click="flipbutton($event)" class="htmlbut">flip back</button> 
-							    <button ng-click="removeitem(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Delete </button>
+					<span ng-hide= "showdetails">
+							<div class="container" style="float:left;">
+								<div class="card" style="float:left;">
+								  <div class="front">
 
-									<button ng-click="edititem(item._id); showdetails = !showdetails; highlight(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Edit </button> 
-									<p> First: {{item.body}} </p>
+								  	<button ng-click="flipbutton($event)" class="htmlbut">flip back</button> 
+								    <button ng-click="removeitem(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Delete </button>
 
-							  </div>
-					      <div class="back">
-										<button ng-click="flipslipper()" class="htmlbut"> flip front</button> <p> Second: {{item.tagline}} </p>
-					      </div>
-					    </div>
-					  </div>
-			  </span>
-		  </div>
-      <br> <br>
-      <span>
-				<input ng-show="showdetails"  ng-model="itemEditBox.body"> 
-				<input ng-show="showdetails"  ng-model= "itemEditBox.tagline">
-				<button ng-show="showdetails"  ng-click="update()"> Update </button> 
-			</span> 
-		</div>
+										<button ng-click="edititem(item._id); showdetails = !showdetails; highlight(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Edit </button> 
+										<p> First: {{item.body}} </p>
+
+								  </div> <!--/front -->
+						      <div class="back">
+											<button ng-click="flipslipper()" class="htmlbut"> flip front</button> <p> Second: {{item.tagline}} </p>
+						      </div> <!--/back -->
+
+						    </div> <!--/card -->
+						  </div> <!--/container-->
+</div>  <!--/moo I need to be here because I am making everything work just like you intended but at a small price-->
+ 
+				  </span>
+	      <br> <br>
 
 
-<!-- ********search experiment-->
+	      <span>
+					<input ng-show="showdetails"  ng-model="itemEditBox.body"> 
+					<input ng-show="showdetails"  ng-model= "itemEditBox.tagline">
+					<button ng-show="showdetails"  ng-click="update()"> Update </button> 
+				</span> 
+			</div> <!--/items in items list -->
+
+
+		
+
+
+
+     <!-- ********search experiment-->
 		<p> {{controllermessage}} </p>
 
 		<div ng-repeat="objarray in displayhtml">
@@ -58,8 +68,9 @@
 				{{obj.postname}}
 		  </div>
 		</div>
-  </div>
-</div>
+
+  </div> <!--/controller-->
+</div> <!--/ng-app-->
 
 <script src="/javascripts/angular.js"> </script>
 
