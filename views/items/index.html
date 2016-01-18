@@ -13,56 +13,60 @@
 	<div ng-controller="ajscontroller">
 		<i> {{title}} </i> <br> <br>
 
-
 		<!-- "search and rememebr me" added ngchange and an added another event for click-->	
 		<input ng-model="itemInputBox.body" ng-change="searchbox.postname = itemInputBox.body"> 
+		<input ng-model= "itemInputBox.tagline">
+		<button ng-click="additem(); searchme()" > Add </button> <br> <br>
+		<hr>
 
+    <!--  *******3d starts from here*****-->	
 
-			<input ng-model= "itemInputBox.tagline">
-			<button ng-click="additem(); searchme()" > Add </button> <br> <br>
-		  <hr>
-<!--  *******3d starts from here*****
- -->			<div ng-repeat="item in itemslist">
+		<div ng-repeat="item in itemslist">
+		<div class="moo"> 
 				<span ng-hide= "showdetails" >
-					<p> First: {{item.body}} </p>
-					<p> Second: {{item.tagline}} </p>
+						<div class="container">
+							<div class="card">
+							  <div class="front">
+							  	<button ng-click="flipbutton($event)" class="htmlbut">flip back</button> 
+							    <button ng-click="removeitem(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Delete </button>
 
-					<button ng-click="removeitem(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Delete </button>
+									<button ng-click="edititem(item._id); showdetails = !showdetails; highlight(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Edit </button> 
+									<p> First: {{item.body}} </p>
 
-					<button ng-click="edititem(item._id); showdetails = !showdetails; highlight(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Edit </button> 
-				</span>
+							  </div>
+					      <div class="back">
+										<button ng-click="flipslipper()" class="htmlbut"> flip front</button> <p> Second: {{item.tagline}} </p>
+					      </div>
+					    </div>
+					  </div>
+			  </span>
+		  </div>
+      <br> <br>
+      <span>
+				<input ng-show="showdetails"  ng-model="itemEditBox.body"> 
+				<input ng-show="showdetails"  ng-model= "itemEditBox.tagline">
+				<button ng-show="showdetails"  ng-click="update()"> Update </button> 
+			</span> 
+		</div>
 
-				<br> <br>
 
-				<span>
-					<input ng-show="showdetails"  ng-model="itemEditBox.body"> 
-					<input ng-show="showdetails"  ng-model= "itemEditBox.tagline">
-					<button ng-show="showdetails"  ng-click="update()"> Update </button> 
-				</span> 
-			</div>
-
-			********search experiment
-
-			<p> {{controllermessage}} </p>
-
+<!-- ********search experiment-->
+		<p> {{controllermessage}} </p>
 
 		<div ng-repeat="objarray in displayhtml">
 			<div ng-repeat="obj in objarray">
 				{{obj.postname}}
 		  </div>
 		</div>
-
+  </div>
 </div>
 
-
-
 <script src="/javascripts/angular.js"> </script>
+
 <script src="/javascripts/rough.js"> </script>
+
 </body>
 </html>
-
-
-
 
 
 

@@ -4,26 +4,7 @@ var myapp = angular.module('ajs', [])
 var storeinarray = [];
 
 
-
-
-myapp.filter('unique', function() {
-   return function(collection, keyname) {
-      var output = [], 
-          keys = [];
-
-      angular.forEach(collection, function(tammy) {
-          var key = tammy[keyname];
-          if(keys.indexOf(key) === -1) {
-              keys.push(key);
-              output.push(tammy);
-          }
-      });
-      return output;
-   };
-})
-
-
-myapp.controller('ajscontroller', function($scope, $http){
+myapp.controller('ajscontroller', function($scope, $http, $document){
   $scope.title = "We are all diamonds taking shape";
 
 
@@ -103,6 +84,43 @@ myapp.controller('ajscontroller', function($scope, $http){
       $scope.tryme = response.data;
     })
   }
+
+ 
+
+  // *********allflips*******
+
+  $scope.flipbutton = function(event){ 
+
+    var getpara = angular.element(event.target).parent().parent('.card')
+    getpara.addClass('sun');
+
+     var removeme = angular.element($document[0].getElementsByClassName('card'));
+    removeme.removeClass('moon')
+
+
+       // **********below also works but selects every element 
+    // var getpara = angular.element($document[0].getElementsByClassName('card'));
+    // getpara.addClass('sun');
+
+    // var removeme = angular.element($document[0].getElementsByClassName('card'));
+    // removeme.removeClass('moon')  
+  }
+
+  $scope.flipslipper = function(){
+
+   var betpara = angular.element(event.target).parent().parent('.card')
+    betpara.addClass('sun');
+
+    var deleme = angular.element($document[0].getElementsByClassName('card'));
+    deleme.removeClass('sun') 
+
+       // **********below also works but selects every element 
+    // var betpara = angular.element($document[0].getElementsByClassName('card'));
+    // betpara.addClass('moon')  
+    // var deleme = angular.element($document[0].getElementsByClassName('card'));
+    // deleme.removeClass('sun') 
+  }
+
 
 });
 
