@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
+
 	<link rel="stylesheet" href="../stylesheets/style.css">
 </head>
 <body>
@@ -23,32 +24,115 @@
 		<hr>
 
     <!--  *******3d starts from here*****-->	
-    <!-- note: there is a problem here. The float works because of an error- moo </div> is not closed and it works. If I comment out the tail of moo then float doesn't line up. What the?  -->
- 			<div ng-repeat="item in itemslist">
+    <!-- note: the mystery of missing moo is solved.  -->
 
-					<span ng-hide= "showdetails">
-						<div class="container" style="float:left;">
-							<div class="card" style="float:left;">
-								<div class="front">
+		<div class="moo">
+		 	<div ng-repeat="item in itemslist">
+		    <span ng-hide= "showdetails">
+					<div class="container" style="float:left;">
+		        <div class="card" style="float:left;">
+					    <div class="front">
+				        <!--    <button ng-click="edititem(item._id); showdetails = !showdetails; highlight(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Edit </button> -->
+						    <button ng-click="flipbutton($event)" class="htmlbut buttonstyle buttonleft">&#8592 </button> 
+						    <button ng-click="removeitem(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'" class="buttonstyle buttonright"> &#8709 </button>
 
-               <!--    <button ng-click="edititem(item._id); showdetails = !showdetails; highlight(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Edit </button> -->
-								  <button ng-click="flipbutton($event)" class="htmlbut">flip back</button> 
-								  <button ng-click="removeitem(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Delete </button>
-									
-									<p> First: {{item.body}} </p>
-								 </div> <!--/front -->
+		              <svg xmlns="http://www.w3.org/2000/svg" height="245" width="438" >
+
+									<!-- the label part start-->  
+								  <rect x="20" y="1" rx="10" ry="10" height="180"  width="396" style="fill:#F38399;stroke:black;stroke-width:2"/>
+									<!-- the label part end--> 
+
+									<!-- foreign object start-->  
+								  <foreignObject x="25" y="20" width="300" height="200">
+								  <p> First: {{item.body}} </p>
+								  </foreignObject>
+									<!-- foreign object end-->  
+
+									<!-- black outer cover for wheels start-->  
+								  <rect x="100" y="100"  height="70"  width="250" rx="33" ry="33" fill="black" style="stroke:black;stroke-width:1.5"/>
+									<!-- black outer cover for wheels end-->  
+
+									<!-- white circles start-->  
+								  <circle r="25" cx="135" cy="135" fill="white" />
+								  <circle r="25" cx="315" cy="135" fill="white" />
+									<!-- white circles end-->  
 
 
-						    <div class="back">
-									<button ng-click="flipslipper()" class="htmlbut"> flip front</button> <p> Second: {{item.tagline}} </p>
-						    </div> <!--/back -->
+									<!-- white rectangle start-->  
+								  <rect x="175" y="110"  height="50"  width="100" rx="10" ry="10" fill="white" style="stroke:black;stroke-width:1.5"/>
+									<!-- white rectangle end-->  
 
-						  </div> <!--/card -->
-						</div> <!--/container-->
-				  </span>
-        </div> <!--/item in itemslist-->
+									<!-- the wheels  start-->  
+								  <g transform="translate(315, 135)">
+									  <circle class= "spininfinity" cx="0" cy="0" r="15" style="fill: black;stroke:black; stroke-width:10; stroke-dasharray:7, 5;">
+									  <line x1="-10" y1="0" x2="10" y2="0" style="stroke: black;" /> 
+									  <line x1="0" y1="-10" x2="0" y2="10" style="stroke: black;" /> 
+								  </g>
 
-	        <br> <br>
+								  <g transform="translate(134, 135)">
+									  <circle class= "spininfinity" cx="0" cy="0" r="15" style="fill: black;stroke:black; stroke-width:10; stroke-dasharray:7, 5;">
+									  <line x1="-10" y1="0" x2="10" y2="0" style="stroke: black;" /> 
+									  <line x1="0" y1="-10" x2="0" y2="10" style="stroke: black;" /> 
+								  </g>
+										<!--   the wheels  end-->  
+
+										<!--   the   boat start -->  
+								  <path d="M20 20  H 300 L 310 70 H 10 Z" fill="#C8C8C8 " style="stroke:	#606060 ; stroke-width:1.5" transform="translate(60, 173)"/>
+										<!--   the   boat end -->  
+
+										<!--   the   screws start -->  
+								  <g transform="translate(15, 230)">
+									  <circle r="10" cx="1" cy="1" fill="white" style="stroke:	#606060 ; stroke-width:1.5" />
+									  <line x1="-10" y1="0" x2="10" y2="0" style="stroke: black;" /> 
+									  <line x1="0" y1="-10" x2="0" y2="10" style="stroke: black;" /> 
+								  </g>
+
+								  <g transform="translate(420, 230)">
+									  <circle r="10" cx="1" cy="1" fill="white" style="stroke:	#606060 ; stroke-width:1.5" />
+									  <line x1="-10" y1="0" x2="10" y2="0" style="stroke: black;" /> 
+								 	  <line x1="0" y1="-10" x2="0" y2="10" style="stroke: black;" /> 
+								  </g>
+								<!--   the screws end  -->  
+		            </svg>				
+						  </div> <!--/front -->
+
+
+						  <div class="back">
+							  <button ng-click="flipslipper()" class="htmlbut buttonstyle backbuttonstyle "> &#8592 </button> 
+		              <svg xmlns="http://www.w3.org/2000/svg" height="245" width="438" >
+		                <rect x="20" y="1" rx="10" ry="10" height="180"  width="396" style="fill:#F38399;stroke:black;stroke-width:2"/>
+			              <!-- the label part end--> 
+
+									  <foreignObject x="25" y="20" width="300" height="200">
+								      <p> Second: {{item.tagline}} </p>
+								    </foreignObject>	
+
+										<!--   the   boat start -->  
+										<path d="M20 20  H 300 L 310 70 H 10 Z" fill="#C8C8C8 " style="stroke:	#606060 ; stroke-width:1.5" transform="translate(60, 173)"/>
+										<!--   the   boat end -->  
+
+										<!--   the   screws start -->  
+										<g transform="translate(15, 230)">
+									  	<circle r="10" cx="1" cy="1" fill="white" style="stroke:	#606060 ; stroke-width:1.5" />
+									  	<line x1="-10" y1="0" x2="10" y2="0" style="stroke: black;" /> 
+									  	<line x1="0" y1="-10" x2="0" y2="10" style="stroke: black;" /> 
+										</g>
+
+										<g transform="translate(420, 230)">
+										  <circle r="10" cx="1" cy="1" fill="white" style="stroke:	#606060 ; stroke-width:1.5" />
+											<line x1="-10" y1="0" x2="10" y2="0" style="stroke: black;" /> 
+											<line x1="0" y1="-10" x2="0" y2="10" style="stroke: black;" /> 
+										</g>
+										<!--   the screws end  --> 
+		              </svg>
+							</div> <!--/back -->
+						</div> <!--/card -->
+					</div> <!--/container-->
+				</span>
+		  </div> <!--/item in itemslist-->
+    </div> <!--/moo -->
+
+	  <br> <br>
 	      <!-- <span>
 	      	<div ng-show="showdetails" class="cardesign">
 						<input ng-show="showdetails"  ng-model="itemEditBox.body"> 
@@ -59,15 +143,17 @@
   </div> <!--/controller-->
 
      <!-- ********search experiment-->
-		<p> {{controllermessage}} </p>
+  <p> {{controllermessage}} </p>
 
-		<div ng-repeat="objarray in displayhtml">
-			<div ng-repeat="obj in objarray">
-				{{obj.postname}}
-		  </div>
-		</div>
-
+	<div ng-repeat="objarray in displayhtml">
+		<div ng-repeat="obj in objarray">
+			{{obj.postname}}
+	  </div>
+	</div>
 </div> <!--/ng-app-->
+
+
+
 
 <script src="/javascripts/angular.js"> </script>
 
