@@ -142,7 +142,7 @@ svg{
   top: 5px; 
 }
 
-/*spinning animation */
+/*spinning animation for the tape*/
 
 @-webkit-keyframes rotating {
   from{
