@@ -15,9 +15,11 @@
 		<i> {{title}} </i> <br> <br>
 
 		<!-- "search and rememebr me" added ngchange and an added another event for click-->	
-		<input ng-model="itemInputBox.body" ng-change="searchbox.postname = itemInputBox.body"> 
-		<input ng-model= "itemInputBox.tagline">
-		<button ng-click="additem(); searchme()" > Add </button> <br> <br>
+		<div class="cardesign">
+			<input ng-model="itemInputBox.body" ng-change="searchbox.postname = itemInputBox.body"> 
+			<input ng-model= "itemInputBox.tagline">
+			<button ng-click="additem(); searchme()" > Add </button> <br> <br>
+	  </div>
 		<hr>
 
     <!--  *******3d starts from here*****-->	
@@ -25,40 +27,36 @@
  			<div ng-repeat="item in itemslist">
 
 					<span ng-hide= "showdetails">
-							<div class="container" style="float:left;">
-								<div class="card" style="float:left;">
-								  <div class="front">
+						<div class="container" style="float:left;">
+							<div class="card" style="float:left;">
+								<div class="front">
 
-								  	<button ng-click="flipbutton($event)" class="htmlbut">flip back</button> 
-								    <button ng-click="removeitem(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Delete </button>
+               <!--    <button ng-click="edititem(item._id); showdetails = !showdetails; highlight(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Edit </button> -->
+								  <button ng-click="flipbutton($event)" class="htmlbut">flip back</button> 
+								  <button ng-click="removeitem(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Delete </button>
+									
+									<p> First: {{item.body}} </p>
+								 </div> <!--/front -->
 
-										<button ng-click="edititem(item._id); showdetails = !showdetails; highlight(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Edit </button> 
-										<p> First: {{item.body}} </p>
 
-								  </div> <!--/front -->
-						      <div class="back">
-											<button ng-click="flipslipper()" class="htmlbut"> flip front</button> <p> Second: {{item.tagline}} </p>
-						      </div> <!--/back -->
+						    <div class="back">
+									<button ng-click="flipslipper()" class="htmlbut"> flip front</button> <p> Second: {{item.tagline}} </p>
+						    </div> <!--/back -->
 
-						    </div> <!--/card -->
-						  </div> <!--/container-->
-</div>  <!--/moo I need to be here because I am making everything work just like you intended but at a small price-->
- 
+						  </div> <!--/card -->
+						</div> <!--/container-->
 				  </span>
-	      <br> <br>
+        </div> <!--/item in itemslist-->
 
-
-	      <span>
-					<input ng-show="showdetails"  ng-model="itemEditBox.body"> 
-					<input ng-show="showdetails"  ng-model= "itemEditBox.tagline">
-					<button ng-show="showdetails"  ng-click="update()"> Update </button> 
-				</span> 
-			</div> <!--/items in items list -->
-
-
-		
-
-
+	        <br> <br>
+	      <!-- <span>
+	      	<div ng-show="showdetails" class="cardesign">
+						<input ng-show="showdetails"  ng-model="itemEditBox.body"> 
+						<input ng-show="showdetails"  ng-model= "itemEditBox.tagline">
+						<button ng-show="showdetails"  ng-click="update()"> Update </button> 
+				</div>
+				</span>  -->
+  </div> <!--/controller-->
 
      <!-- ********search experiment-->
 		<p> {{controllermessage}} </p>
@@ -69,7 +67,6 @@
 		  </div>
 		</div>
 
-  </div> <!--/controller-->
 </div> <!--/ng-app-->
 
 <script src="/javascripts/angular.js"> </script>

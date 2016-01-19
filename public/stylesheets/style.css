@@ -18,31 +18,24 @@ a {
 
 
 /******starts*/
-html, body { 
-/*   height: 100%;
-*/}
+body { 
+background-color:   #FF6347}
 
 
-/*moo has been commented out since it doesn't serve any purpose on the html page except for it tail. see notes in the front.
-*//*.moo{
-  background-color:green;
-  width: 360px;
-  height:360px;
-  float: left;
-  margin: 20px;
-  padding: 15px;
-  width: 400px;
-  height: 300px;
- 
-}
-*/
 
-
-.container {
+.cardesign{
   width: 300px;
   height: 300px;
   border: 1px solid #ccc;
-  background-color:#FFFFC8;
+  background-color:#66CDAA;
+
+}
+
+.container {
+  width: 500px;
+  height: 300px;
+/*  border: 1px solid #ccc;
+*/  background-color:#FF4500;
   perspective: 800px;
   margin: 10px;
   padding: 15px;
@@ -73,12 +66,15 @@ html, body {
 
 
 .card .front {
-  background-color: #FFC8E3;
+  background-color: #303030;
+  border-radius: 15px;
+
 }
 
 .card .back {
   background: #D9F3FF;
   transform: rotateY( 180deg );
+  border-radius: 15px;
 }
 
 
@@ -99,60 +95,3 @@ html, body {
 
 
 
-
-
-/*******below is correct*******/
-
-/*flipequip*/
-/*.moo{
-  float: left;
-  margin: 2px;
-  column-count: 3;
-
-}
-
-.container {
-    width: 350px;
-    height: 350px;
-    position: relative;
-    border: 1px solid #ccc;
-    background-color:#FFFFC8;
-    perspective: 800px;
-    float: left;
-
-
-}
-.card {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    transition: transform 1.5s;
-    transform-style: preserve-3d;
-    -webkit-transform-origin: 50% 50%;
-}
-.card div {
-    display: block;
-    height: 100%;
-    width: 100%;
-    color: white;
-    text-align: center;
-    font-weight: bold;
-    font-size: 12px;
-    position: absolute;
-    backface-visibility: hidden;
-}
-.card .front {
-  background-color: #FFC8E3;
-}
-.card .back {
-    background: #D9F3FF;
-    transform: rotateY( 180deg );
-}
-.sun {
-    transform: rotateY( 180deg );
-}
-
-.moon {
-    transform: rotateY(0deg );
-}
-*/
