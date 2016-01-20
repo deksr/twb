@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- <html ng-app="ajs">-->
-<html>
+<html ng-app= "ajs">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,18 +10,30 @@
 </head>
 <body>
 
-<div ng-app = "ajs">
+<div ng-controller="ajscontroller">
+<div class="navbar">
+ <div class="logo"> Music App </div>
+ <input class="searchbox">
+ <div class="addbutton clickforadd" ng-click='showaddmodel()'> + </div>
+</div>
 
-	<div ng-controller="ajscontroller">
-		<i> {{title}} </i> <br> <br>
+<!-- <img class= "tapeimagesvg"src="../images/tapeworking.svg">-->
+<!-- <div ng-app = "ajs">-->
+<!-- 	<div ng-controller="ajscontroller"> -->		
+
+<i> {{title}} </i> <br> <br>
 
 		<!-- "search and rememebr me" added ngchange and an added another event for click-->	
-		<div class="cardesign">
-			<input ng-model="itemInputBox.body" ng-change="searchbox.postname = itemInputBox.body"> 
-			<input ng-model= "itemInputBox.tagline">
-			<button ng-click="additem(); searchme()" > Add </button> <br> <br>
+		<div class="modalbox" ng-show="showingaddmodel" >
+			<div class="boxinmodal">
+				<input ng-model="itemInputBox.body" ng-change="searchbox.postname = itemInputBox.body"> 
+				<input ng-model= "itemInputBox.tagline">
+				<button ng-click="additem(); searchme(); hidemodal();" > Add </button> <br> <br>
+		  </div>
 	  </div>
 		<hr>
+
+
 
     <!--  *******3d starts from here*****-->	
     <!-- note: the mystery of missing moo is solved.  -->
@@ -151,8 +163,6 @@
 	  </div>
 	</div>
 </div> <!--/ng-app-->
-
-
 
 
 <script src="/javascripts/angular.js"> </script>

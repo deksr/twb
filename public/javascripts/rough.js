@@ -87,7 +87,7 @@ myapp.controller('ajscontroller', function($scope, $http, $document){
 
  
 
-  // *********allflips*******
+  // *********allflips for dom css and jqlite*******
 
   $scope.flipbutton = function(event){ 
 
@@ -122,6 +122,18 @@ myapp.controller('ajscontroller', function($scope, $http, $document){
   }
 
 
+   // *******show and hide for adding form in dom******
+
+    $scope.showaddmodel =  function(){
+      $scope.showingaddmodel = true;
+       var gotdome =  angular.element($document[0].getElementsByClassName('modalbox'))
+       gotdome.removeClass('vanishmodal');
+    }
+
+    $scope.hidemodal = function(){
+       var gotdome =  angular.element($document[0].getElementsByClassName('modalbox'))
+       gotdome.addClass('vanishmodal');
+    }
 });
 
 
