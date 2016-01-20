@@ -39,7 +39,7 @@
     <!-- note: the mystery of missing moo is solved.  -->
 
 		<div class="moo">
-		 	<div ng-repeat="item in itemslist">
+		 	<div ng-repeat="item in itemslist | orderBy: 'date':true">
 		    <span ng-hide= "showdetails">
 					<div class="container" style="float:left;">
 		        <div class="card" style="float:left;">
@@ -57,6 +57,8 @@
 									<!-- foreign object start-->  
 								  <foreignObject x="25" y="20" width="300" height="200">
 								  <p> First: {{item.body}} </p>
+								  <p> First: {{item.date | date: 'fullDate'}} </p>
+
 								  </foreignObject>
 									<!-- foreign object end-->  
 

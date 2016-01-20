@@ -11,7 +11,7 @@ myapp.controller('ajscontroller', function($scope, $http, $document){
 	var pageload= function(){
    // get request
 		$http.get('/items/blooms').then(function(response) {
-	    // console.log(response.data)
+	    console.log(response.data);
 	    $scope.itemslist = response.data;
 	  })
 	}

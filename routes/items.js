@@ -10,6 +10,8 @@ router.get('/', function(req, res) {
 // for getting data
 router.get('/blooms', function(req, res) {
   Item.find({}).exec(function(err, items) {
+    // console.log("data from the db")
+    // console.log(items)
     res.json(items);
   });
 });
@@ -17,9 +19,10 @@ router.get('/blooms', function(req, res) {
 
 // for posting data
 router.post('/blooms', function(req, res) {
-  // console.log(req.body);
+  console.log(req.body);
 	Item.create(req.body, function(err, item) {
-	    // console.log(item)
+      // console.log("from post the data")
+	    // console.log(item);   
 	    res.json(item)
   });
 });
