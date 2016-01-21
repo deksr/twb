@@ -7,15 +7,18 @@
 	<title></title>
 
 	<link rel="stylesheet" href="../stylesheets/style.css">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
 
 <div ng-controller="ajscontroller">
-<div class="navbar">
- <div class="logo"> Music App </div>
- <input class="searchbox">
- <div class="addbutton clickforadd" ng-click='showaddmodel()'> + </div>
-</div>
+	<div class="navbar">
+	 <span class="logo"> Music App </span>
+			 <span class="fa fa-search"></span>
+			 <input class="searchbox" placeholder="Search...">  
+	 <span class="addbutton clickforadd" ng-click='showaddmodel()'> + </span>
+	</div>
 
 <!-- <img class= "tapeimagesvg"src="../images/tapeworking.svg">-->
 <!-- <div ng-app = "ajs">-->
@@ -25,12 +28,15 @@
 
 		<!-- "search and rememebr me" added ngchange and an added another event for click-->	
 		<div class="modalbox" ng-show="showingaddmodel" >
-			<div class="boxinmodal">
-				<div class="modalclosebutton"> <button class="modalbuttonstyle" ng-click="hidemodal()"> X </button> </div>
+			<span class="boxinmodal">
+				<span class="modalclosebutton"> <button class="modalbuttonstyle" ng-click="hidemodal()"> X </button> </span>
 					<textarea rows="5" cols="70" class= "modalinputboxes" ng-model="itemInputBox.body" ng-change="searchbox.postname = itemInputBox.body"> some text here </textarea> 
 					<input class= "modalinputboxes inputboxsize" ng-model= "itemInputBox.tagline">
+
+					<input class= "modalinputboxes inputboxsize" ng-model= "itemInputBox.genres">
+
 					<button class= "modalinputboxes ghostbutton" ng-click="additem(); searchme(); hidemodal();" > Add </button> <br> <br>
-		  </div>
+		  </span>
 	  </div>
 		<hr>
 
@@ -57,8 +63,14 @@
 
 									<!-- foreign object start-->  
 								  <foreignObject x="25" y="20" width="300" height="200">
-								  <p> First: {{item.body}} </p>
-								  <p> First: {{item.date | date: 'fullDate'}} </p>
+								  <p> First: {{item.body}} , 
+								   Date: {{item.date | date: 'fullDate'}} , 
+								   <div ng-repeat="i in item.genres"> 
+                       Genre: {{i}}
+                    </div> 
+                  </p>
+								   
+
 
 								  </foreignObject>
 									<!-- foreign object end-->  

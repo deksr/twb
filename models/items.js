@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var schema = mongoose.Schema({
   body: String,
   tagline: String,
+  genres:[String],
   date: { type: Date, default: Date.now }
 });
 
