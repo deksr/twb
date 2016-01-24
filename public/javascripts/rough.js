@@ -8,8 +8,8 @@ var allresults = [];
 
 
 
-myapp.controller('ajscontroller', function($scope, $http, $document){
-  $scope.title = "We are all diamonds taking shape";
+myapp.controller('ajscontroller', function($scope, $http, $document, $window, $interval){
+  $scope.title = "A hidden message to all: We are all diamonds taking shape.";
 
 
 	var pageload= function(){
@@ -85,7 +85,7 @@ myapp.controller('ajscontroller', function($scope, $http, $document){
 
 
 
-  // note note: added this to the autocomplte scope*******
+  // note note: added this in autoform function *******
   // $scope.searchthis =  function(enterkey){
   //   if (enterkey.which === 13){
   //   console.log("enterkey 13 pressed");
@@ -255,6 +255,34 @@ myapp.controller('ajscontroller', function($scope, $http, $document){
       }
     })
   }
+
+  // ******** slideshows starts here
+  // note note: loading the window and document. both work. pass $window with $scope and others
+
+  // 1. angular.element(document).ready(function () {
+  //   console.log("this works ")
+  // });
+
+  angular.element($window).bind('load', function() {
+    console.log("hay hay")
+
+    var counter = 0
+    var images  = ['url("/images/imageone.jpg")', 'url("/images/imagetwo.jpg")', 'url("/images/imageone.jpg")' ]
+
+    function slideimage(){
+    // console.log("slideimage")
+
+    counter = counter + 1
+    var forslide =  angular.element($document[0].getElementsByClassName('acontainer'))
+    forslide.css('background-image', images[counter])
+
+      if (counter === images.length){
+          clearInterval(counter);
+      }
+    };
+
+    $interval(slideimage, 3000)
+  });
 
 });
 

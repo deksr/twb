@@ -75,13 +75,16 @@
 
 <!-- 	***********slideshow + 3d animation start**************-->  
  <i> {{title}} </i> <br> <br>
-<div class= "slideimages" >  
+<div class= "slideimages" >  <!-- this is the white background -->
 	<div class= "acontainer"> <!-- this has images embeded within it -->
   </div>
 
 
+
+
+
 		<div class="moo">
-				 	<div ng-repeat="item in itemslist | orderBy: 'date':true">
+				 	<div ng-repeat="item in itemslist | orderBy: 'date':true | limitTo:6">
 				    <span ng-hide= "showdetails">
 							<div class="container" style="float:left;">
 				        <div class="card" style="float:left;">
@@ -188,6 +191,7 @@
 				  </div> <!--/item in itemslist-->
 		    </div> <!--/moo -->
 
+
 		      ********search result end
 
 </div> <!--/controller-->
@@ -197,6 +201,8 @@
 <script src="/javascripts/angular.js"> </script>
 
 <script src="/javascripts/rough.js"> </script>
+
+
 
 </body>
 </html>
