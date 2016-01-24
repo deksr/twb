@@ -257,6 +257,8 @@ body {
   background: url('/images/imageone.jpg') center;
   background-repeat: no-repeat;
   background-size: 100%;
+  transition: all .8s ease-in-out;
+
 }
 
 .firstimage{

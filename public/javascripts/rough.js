@@ -274,7 +274,7 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
 
     counter = counter + 1
     var forslide =  angular.element($document[0].getElementsByClassName('acontainer'))
-    forslide.css('background-image', images[counter])
+    forslide.css('background-image', images[counter] )
 
       if (counter === images.length){
           clearInterval(counter);
@@ -282,6 +282,7 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
     };
 
     $interval(slideimage, 3000)
+
   });
 
 });
