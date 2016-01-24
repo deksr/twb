@@ -71,7 +71,16 @@ router.put('/blooms/:id', function(req, res) {
 });
 
 
+// ******** search functionality for the searchbox
 
+router.get('/search?/', function(req, res) {
+  console.log("??")
+  console.log(req.query.genres)
+  Item.find({genres: new RegExp(req.query.genres, "i")},function(err, items) {
+    console.log(items)
+      res.json(items) 
+  });
+});
 
 module.exports = router;
 

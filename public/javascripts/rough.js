@@ -2,6 +2,10 @@ console.log("rough.js");
 
 var myapp = angular.module('ajs', [])
 var storeinarray = [];
+var duplicategenre = [];
+var dupesinarray = [];
+var allresults = [];
+
 
 
 myapp.controller('ajscontroller', function($scope, $http, $document){
@@ -66,15 +70,35 @@ myapp.controller('ajscontroller', function($scope, $http, $document){
   // *****************search functionality**************
 
   $scope.controllermessage = "from search controller welcome"
-  $scope.searchme =  function(){
-    // console.log($scope.searchbox.term);
-    $http.get('/posts/search?', {params:{"postname":$scope.searchbox.postname}}).then(function(response){
-      $scope.searchresults = response.data
-      var storeddata = $scope.searchresults
-      storeinarray.push(storeddata)
-      $scope.displayhtml = storeinarray
-    })
-  }
+
+  //note note note:  below commented out search ($scope.searchme) was written to send request to another controller. Was simply trying things and this is fully functioning. don't delete.
+
+  // $scope.searchme =  function(){
+  //   // console.log($scope.searchbox.term);
+  //   $http.get('/posts/search?', {params:{"postname":$scope.searchbox.postname}}).then(function(response){
+  //     $scope.searchresults = response.data
+  //     var storeddata = $scope.searchresults
+  //     storeinarray.push(storeddata)
+  //     $scope.displayhtml = storeinarray
+  //   })
+  // }
+
+
+
+  // note note: added this to the autocomplte scope*******
+  // $scope.searchthis =  function(enterkey){
+  //   if (enterkey.which === 13){
+  //   console.log("enterkey 13 pressed");
+  //   console.log($scope.searchboxterm.genres);
+  //     $http.get('/items/search?', {params:{"genres":$scope.searchboxterm.genres}}).then(function(response){
+  //       $scope.searchresults = response.data
+  //       var storeddata = $scope.searchresults
+  //       storeinarray.push(storeddata)
+  //       console.log(storeinarray)
+  //       $scope.displayhtml = storeinarray
+  //     })
+  //   }
+  // }
 
 
   $scope.justry =  function(){
@@ -112,7 +136,7 @@ myapp.controller('ajscontroller', function($scope, $http, $document){
     betpara.addClass('sun');
 
     var deleme = angular.element($document[0].getElementsByClassName('card'));
-    deleme.removeClass('sun') 
+    deleme.removeClass('sun');
 
        // **********below also works but selects every element 
     // var betpara = angular.element($document[0].getElementsByClassName('card'));
@@ -122,18 +146,115 @@ myapp.controller('ajscontroller', function($scope, $http, $document){
   }
 
 
-   // *******show and hide for adding form in dom******
+  // *******show and hide for adding form in dom******
 
-    $scope.showaddmodel =  function(){
-      $scope.showingaddmodel = true;
-       var gotdome =  angular.element($document[0].getElementsByClassName('modalbox'))
-       gotdome.removeClass('vanishmodal');
+  $scope.showaddmodel =  function(){
+    $scope.showingaddmodel = true;
+    var gotdome =  angular.element($document[0].getElementsByClassName('modalbox'))
+    gotdome.removeClass('vanishmodal');
+  }
+
+  $scope.hidemodal = function(){
+    var gotdome =  angular.element($document[0].getElementsByClassName('modalbox'))
+    gotdome.addClass('vanishmodal');
+  }
+
+   // *******keypress event for the autocomplete form in dom******
+
+
+
+ $scope.autoform =  function(){
+    console.log("one key pressed")
+    // when pressed in the input form, show the orange box
+    var gotacf =  angular.element($document[0].getElementsByClassName('dormantautos'))
+    gotacf.addClass('autosearchbox')  
+
+    // this again diplays the word in the searchbox
+    var reactivatedom =  angular.element($document[0].getElementsByClassName('autowords'))
+    reactivatedom.removeClass('wordvanishcss')
+   
+   
+    // scenarios 1: if cursor moved outside the input field, autoform and the autofill words should hide 
+    $scope.mouseleft = function(){
+      console.log("mouseleft")
+      var gotdome =  angular.element($document[0].getElementsByClassName('dormantautos'))
+      gotacf.removeClass('autosearchbox')
+
+      var autoword =  angular.element($document[0].getElementsByClassName('autowords'))
+      autoword.addClass('wordvanishcss')
     }
 
-    $scope.hidemodal = function(){
-       var gotdome =  angular.element($document[0].getElementsByClassName('modalbox'))
-       gotdome.addClass('vanishmodal');
+
+    // scenarios: if cursor moved on the orange box, autoform and the autofill words should display
+    $scope.mousemoveaction = function(){
+      console.log("mousemoved")
+      var gotacf =  angular.element($document[0].getElementsByClassName('dormantautos'))
+      gotacf.addClass('autosearchbox') 
+
+     var reactivatedom =  angular.element($document[0].getElementsByClassName('autowords'))
+     reactivatedom.removeClass('wordvanishcss')
     }
+
+    // when you press one letter, bring in the data to display on the orange box
+    $http.get('/items/blooms').then(function(response) {
+      console.log(response.data);
+      $scope.allduplicates = response.data;
+
+      var experiment  = response.data
+      for (i = 0; i < experiment.length; i++) { 
+        console.log(experiment[i].genres)
+        duplicategenre.push(experiment[i].genres)
+        // console.log(duplicategenre) /array containing arrays - two dimensional arrays
+      }
+       // array containing arrays is sent into one arras with strings
+      for (i = 0; i < duplicategenre.length; i++) { 
+        console.log(duplicategenre[i])
+        var dupes = duplicategenre[i];
+        for(var j = 0; j < dupes.length; j++) {
+          // console.log(dupes[j]);
+          dupesinarray.push(dupes[j])
+          console.log(dupesinarray)
+        } 
+      }
+     // to find the duplicates in the final array: 
+      var a = dupesinarray.sort();
+      a.filter( function(v,i,o){
+        if(i>=0 && v!==o[i-1])
+        allresults.push(v)
+      }); 
+
+      $scope.acb =  allresults // display the auto result inside the orange box
+      $scope.searchthis =  function(enterkey){
+        if (enterkey.which === 13){
+        console.log("enterkey 13 pressed");
+        console.log($scope.searchboxterm.genres);
+          $http.get('/items/search?', {params:{"genres":$scope.searchboxterm.genres}}).then(function(response){
+            $scope.searchresults = response.data
+            var storeddata = $scope.searchresults
+            storeinarray.push(storeddata)
+            console.log(storeinarray)
+
+            // getting search result to display on html
+            angular.forEach(storeinarray, function(eachitem) {
+             console.log(eachitem)
+            $scope.displayhtml = eachitem
+            });
+
+            // once the search is done remove the orange searchbox 
+            var gotacf =  angular.element($document[0].getElementsByClassName('dormantautos'))
+            gotacf.removeClass('autosearchbox')
+
+            // and then remove displayed words 
+            var autoword =  angular.element($document[0].getElementsByClassName('autowords'))
+            autoword.addClass('wordvanishcss')
+
+            $scope.wordsvanish = true;
+            $scope.searchboxterm = {}; //clear the search tab
+          })
+        }
+      }
+    })
+  }
+
 });
-
 

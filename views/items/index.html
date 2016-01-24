@@ -8,176 +8,190 @@
 
 	<link rel="stylesheet" href="../stylesheets/style.css">
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
 
 <div ng-controller="ajscontroller">
-	<div class="navbar">
-	 <span class="logo"> Music App </span>
-			 <span class="fa fa-search"></span>
-			 <input class="searchbox" placeholder="Search...">  
-	 <span class="addbutton clickforadd" ng-click='showaddmodel()'> + </span>
-	</div>
 
-<!-- <img class= "tapeimagesvg"src="../images/tapeworking.svg">-->
-<!-- <div ng-app = "ajs">-->
-<!-- 	<div ng-controller="ajscontroller"> -->		
 
-<i> {{title}} </i> <br> <br>
+	<!-- ************** navbar start************-->
 
-		<!-- "search and rememebr me" added ngchange and an added another event for click-->	
-		<div class="modalbox" ng-show="showingaddmodel" >
-			<span class="boxinmodal">
-				<span class="modalclosebutton"> <button class="modalbuttonstyle" ng-click="hidemodal()"> X </button> </span>
-					<textarea rows="5" cols="70" class= "modalinputboxes" ng-model="itemInputBox.body" ng-change="searchbox.postname = itemInputBox.body"> some text here </textarea> 
-					<input class= "modalinputboxes inputboxsize" ng-model= "itemInputBox.tagline">
+	<div class="whitenavbar">
+		<img class="muziklogo" src="../images/muziklogo.svg">
 
-					<input class= "modalinputboxes inputboxsize" ng-model= "itemInputBox.genres">
 
-					<button class= "modalinputboxes ghostbutton" ng-click="additem(); searchme(); hidemodal();" > Add </button> <br> <br>
-		  </span>
+	  <div class="auotosearch">
+			<input class="searchbox" placeholder="Search..." ng-model="searchboxterm.genres" ng-keypress="searchthis($event)" ng-click="autoform()" ng-mouseleave="mouseleft($event)"> 
+			<div class="dormantautos" ng-mousemove="mousemoveaction($event)" ng-mouseleave="mouseleft($event)"> <!--orange box here -->
+	      <div ng-repeat="word in acb" class=" autowords"> <!-- bring auto words inside-->
+
+	          {{word}} <hr>
+	      </div>
+	    </div>
 	  </div>
-		<hr>
+
+
+	<div class = "addbox"> 
+	<span class="addbutton clickforadd" ng-click='showaddmodel()'> + </span>
+	</div>  
+	  </div>
+
+  
+<!-- ************** navbar end************-->
+
+
+<!-- 	**************the modal popup starts************-->
+
+		<!--  note:  added ngchange (ng-change="searchbox.postname = itemInputBox.body")and added another event for click in the same input box to look up for another item in another table in database. note this search feature commented out in angular since it is for anotehr controller. just experimenting stuff-->	
+		<div class="modalbox" ng-show="showingaddmodel" >
+			<div class="boxinmodal">
+				<button class="modalbuttonstyle modalclosebutton" ng-click="hidemodal()"> X </button> 
+				<div class="inputboxwrappers">	
+					<label>Title</label> <br>
+					<input class= "modalinputboxes inputboxsize" ng-model="itemInputBox.body" ng-change="searchbox.postname = itemInputBox.body">
+					<br>
+					<label>Description</label> <br>
+					<input class= "modalinputboxes inputboxsize" ng-model= "itemInputBox.tagline">
+					<br>
+					<label>Tags</label> <br>
+					<input class= "modalinputboxes inputboxsize" ng-model= "itemInputBox.genres">
+					<br>
+
+          <!-- <button class= "modalinputboxes ghostbutton" ng-click="additem(); searchme(); hidemodal();" > Add </button> <br> <br> -->
+
+          <button class= "modalinputboxes ghostbutton" ng-click="additem(); hidemodal()" >
+					 Add </button> <br> <br>
+
+				</div>	
+
+		  </div>
+	  </div>
+
+<!-- 	**************the modal popup ends************-->
 
 
 
-    <!--  *******3d starts from here*****-->	
-    <!-- note: the mystery of missing moo is solved.  -->
+
+
+<!-- 	***********slideshow + 3d animation start**************-->  
+ <i> {{title}} </i> <br> <br>
+<div class= "slideimages" >  
+	<div class= "acontainer"> <!-- this has images embeded within it -->
+  </div>
+
 
 		<div class="moo">
-		 	<div ng-repeat="item in itemslist | orderBy: 'date':true">
-		    <span ng-hide= "showdetails">
-					<div class="container" style="float:left;">
-		        <div class="card" style="float:left;">
-					    <div class="front">
-				        <!--    <button ng-click="edititem(item._id); showdetails = !showdetails; highlight(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Edit </button> -->
-						    <button ng-click="flipbutton($event)" class="htmlbut buttonstyle buttonleft">&#8592 </button> 
-						    <button ng-click="removeitem(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'" class="buttonstyle buttonright"> &#8709 </button>
-
-		              <svg xmlns="http://www.w3.org/2000/svg" height="245" width="438" >
-
-									<!-- the label part start-->  
-								  <rect x="20" y="1" rx="10" ry="10" height="180"  width="396" style="fill:#F38399;stroke:black;stroke-width:2"/>
-									<!-- the label part end--> 
-
-									<!-- foreign object start-->  
-								  <foreignObject x="25" y="20" width="300" height="200">
-								  <p> First: {{item.body}} , 
-								   Date: {{item.date | date: 'fullDate'}} , 
-								   <div ng-repeat="i in item.genres"> 
-                       Genre: {{i}}
-                    </div> 
-                  </p>
-								   
+				 	<div ng-repeat="item in itemslist | orderBy: 'date':true">
+				    <span ng-hide= "showdetails">
+							<div class="container" style="float:left;">
+				        <div class="card" style="float:left;">
+							    <div class="front">
 
 
-								  </foreignObject>
-									<!-- foreign object end-->  
-
-									<!-- black outer cover for wheels start-->  
-								  <rect x="100" y="100"  height="70"  width="250" rx="33" ry="33" fill="black" style="stroke:black;stroke-width:1.5"/>
-									<!-- black outer cover for wheels end-->  
-
-									<!-- white circles start-->  
-								  <circle r="25" cx="135" cy="135" fill="white" />
-								  <circle r="25" cx="315" cy="135" fill="white" />
-									<!-- white circles end-->  
+						           <!-- <button ng-click="edititem(item._id); showdetails = !showdetails; highlight(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Edit </button> -->
 
 
-									<!-- white rectangle start-->  
-								  <rect x="175" y="110"  height="50"  width="100" rx="10" ry="10" fill="white" style="stroke:black;stroke-width:1.5"/>
-									<!-- white rectangle end-->  
+								    <button ng-click="flipbutton($event)" class="htmlbut buttonstyle buttonleft">&#8592 </button> 
+								    <button ng-click="removeitem(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'" class="buttonstyle buttonright"> &#8709 </button>
+	
+                    <div class="contentincard">
+										  <p> First: {{item.body}} </p> 
+										   <p> Date: {{item.date | date: 'fullDate'}} </p> 
+										   <div ng-repeat="i in item.genres"> 
+		                       Genre: {{i}}
+		                    </div> 
+		                  
+                    </div>
 
-									<!-- the wheels  start-->  
-								  <g transform="translate(315, 135)">
-									  <circle class= "spininfinity" cx="0" cy="0" r="15" style="fill: black;stroke:black; stroke-width:10; stroke-dasharray:7, 5;">
-									  <line x1="-10" y1="0" x2="10" y2="0" style="stroke: black;" /> 
-									  <line x1="0" y1="-10" x2="0" y2="10" style="stroke: black;" /> 
-								  </g>
+				              <svg xmlns="http://www.w3.org/2000/svg" height="245" width="438" >
 
-								  <g transform="translate(134, 135)">
-									  <circle class= "spininfinity" cx="0" cy="0" r="15" style="fill: black;stroke:black; stroke-width:10; stroke-dasharray:7, 5;">
-									  <line x1="-10" y1="0" x2="10" y2="0" style="stroke: black;" /> 
-									  <line x1="0" y1="-10" x2="0" y2="10" style="stroke: black;" /> 
-								  </g>
-										<!--   the wheels  end-->  
-
-										<!--   the   boat start -->  
-								  <path d="M20 20  H 300 L 310 70 H 10 Z" fill="#C8C8C8 " style="stroke:	#606060 ; stroke-width:1.5" transform="translate(60, 173)"/>
-										<!--   the   boat end -->  
-
-										<!--   the   screws start -->  
-								  <g transform="translate(15, 230)">
-									  <circle r="10" cx="1" cy="1" fill="white" style="stroke:	#606060 ; stroke-width:1.5" />
-									  <line x1="-10" y1="0" x2="10" y2="0" style="stroke: black;" /> 
-									  <line x1="0" y1="-10" x2="0" y2="10" style="stroke: black;" /> 
-								  </g>
-
-								  <g transform="translate(420, 230)">
-									  <circle r="10" cx="1" cy="1" fill="white" style="stroke:	#606060 ; stroke-width:1.5" />
-									  <line x1="-10" y1="0" x2="10" y2="0" style="stroke: black;" /> 
-								 	  <line x1="0" y1="-10" x2="0" y2="10" style="stroke: black;" /> 
-								  </g>
-								<!--   the screws end  -->  
-		            </svg>				
-						  </div> <!--/front -->
+												
+				            </svg>				
+								  </div> <!--/front -->
 
 
-						  <div class="back">
-							  <button ng-click="flipslipper()" class="htmlbut buttonstyle backbuttonstyle "> &#8592 </button> 
-		              <svg xmlns="http://www.w3.org/2000/svg" height="245" width="438" >
-		                <rect x="20" y="1" rx="10" ry="10" height="180"  width="396" style="fill:#F38399;stroke:black;stroke-width:2"/>
-			              <!-- the label part end--> 
+								  <div class="back">
+									  <button ng-click="flipslipper()" class="htmlbut buttonstyle backbuttonstyle "> &#8592 </button> 
+				              
 
-									  <foreignObject x="25" y="20" width="300" height="200">
-								      <p> Second: {{item.tagline}} </p>
-								    </foreignObject>	
+										      <p> Second: {{item.tagline}} </p>
+										    
 
-										<!--   the   boat start -->  
-										<path d="M20 20  H 300 L 310 70 H 10 Z" fill="#C8C8C8 " style="stroke:	#606060 ; stroke-width:1.5" transform="translate(60, 173)"/>
-										<!--   the   boat end -->  
+									</div> <!--/back -->
+								</div> <!--/card -->
+							</div> <!--/container-->
+						</span>
+				  </div> <!--/item in itemslist-->
+		    </div> <!--/moo -->
 
-										<!--   the   screws start -->  
-										<g transform="translate(15, 230)">
-									  	<circle r="10" cx="1" cy="1" fill="white" style="stroke:	#606060 ; stroke-width:1.5" />
-									  	<line x1="-10" y1="0" x2="10" y2="0" style="stroke: black;" /> 
-									  	<line x1="0" y1="-10" x2="0" y2="10" style="stroke: black;" /> 
-										</g>
+</div>
+<!-- 	***********slideshow + ed animation end ********-->
 
-										<g transform="translate(420, 230)">
-										  <circle r="10" cx="1" cy="1" fill="white" style="stroke:	#606060 ; stroke-width:1.5" />
-											<line x1="-10" y1="0" x2="10" y2="0" style="stroke: black;" /> 
-											<line x1="0" y1="-10" x2="0" y2="10" style="stroke: black;" /> 
-										</g>
-										<!--   the screws end  --> 
-		              </svg>
-							</div> <!--/back -->
-						</div> <!--/card -->
-					</div> <!--/container-->
-				</span>
-		  </div> <!--/item in itemslist-->
-    </div> <!--/moo -->
 
 	  <br> <br>
-	      <!-- <span>
+	<!--       <span>
 	      	<div ng-show="showdetails" class="cardesign">
 						<input ng-show="showdetails"  ng-model="itemEditBox.body"> 
 						<input ng-show="showdetails"  ng-model= "itemEditBox.tagline">
 						<button ng-show="showdetails"  ng-click="update()"> Update </button> 
 				</div>
 				</span>  -->
-  </div> <!--/controller-->
 
-     <!-- ********search experiment-->
-  <p> {{controllermessage}} </p>
 
-	<div ng-repeat="objarray in displayhtml">
-		<div ng-repeat="obj in objarray">
-			{{obj.postname}}
-	  </div>
-	</div>
-</div> <!--/ng-app-->
+	     ********search result 
+	  <p> {{controllermessage}} </p>
+
+		<div ng-repeat="objarray in displayhtml">
+			{{objarray}}
+			<div ng-repeat="obj in objarray">
+				{{obj.genres}}
+		  </div>
+		</div>
+
+<div class="moo">
+				 	<div ng-repeat="objarray in displayhtml | orderBy: 'date':true">
+				    <span ng-hide= "showdetails">
+							<div class="container" style="float:left;">
+				        <div class="card" style="float:left;">
+							    <div class="front">
+
+								    <button ng-click="flipbutton($event)" class="htmlbut buttonstyle buttonleft">&#8592 </button> 
+								    <button ng-click="removeitem(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'" class="buttonstyle buttonright"> &#8709 </button>
+	
+                    <div class="contentincard">
+										  <p> First: {{objarray.body}}</p> 
+										   <p> Date: {{objarray.date | date: 'fullDate'}} </p> 
+										   <div ng-repeat="i in objarray.genres"> 
+		                       Genre: {{i}}
+		                    </div> 
+		                  
+                    </div>
+
+				              <svg xmlns="http://www.w3.org/2000/svg" height="245" width="438" >
+
+												
+				            </svg>				
+								  </div> <!--/front -->
+
+
+								  <div class="back">
+									  <button ng-click="flipslipper()" class="htmlbut buttonstyle backbuttonstyle "> &#8592 </button> 
+				              
+
+										      <p> Second: {{objarray.tagline}} </p>
+										    
+
+									</div> <!--/back -->
+								</div> <!--/card -->
+							</div> <!--/container-->
+						</span>
+				  </div> <!--/item in itemslist-->
+		    </div> <!--/moo -->
+
+		      ********search result end
+
+</div> <!--/controller-->
+
 
 
 <script src="/javascripts/angular.js"> </script>
