@@ -21,9 +21,9 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
       // note: below is for the background image of albumart. Here $scope.itemslist.forEach does the trick and on view you can go with ng-style instead on tehe div. I was getiing an error of 10 digest scrool to see previous way of doing that gave me error. 
 
       var albumimage= [
-      {'backgroundimage': 'url("/images/albumart/albumart1.jpg")'}, 
-      {'backgroundimage': 'url("/images/albumart/albumart2.jpg")'},
-      {'backgroundimage': 'url("/images/albumart/albumart4.jpg")'},
+      // {'backgroundimage': 'url("/images/albumart/albumart1.jpg")'}, 
+      // {'backgroundimage': 'url("/images/albumart/albumart2.jpg")'},
+      // {'backgroundimage': 'url("/images/albumart/albumart4.jpg")'},
       {'backgroundimage':  'url("/images/albumart/albumart5.jpg")'}
       ]
 
