@@ -36,6 +36,8 @@
 	</div>  
 	  </div>
 
+
+
   
 <!-- ************** navbar end************-->
 
@@ -73,7 +75,8 @@
 
 
 
-<!-- 	***********slideshow + 3d animation start**************-->  
+<!-- 	***********slideshow + 3d animation start**************--> 
+
  <i> {{title}} </i> <br> <br>
 <div class= "slideimages" >  <!-- this is the white background -->
 	<div class= "acontainer"> <!-- this has images embeded within it -->
@@ -81,14 +84,19 @@
 
 
 
-
-
 		<div class="moo">
+
 				 	<div ng-repeat="item in itemslist | orderBy: 'date':true | limitTo:6">
 				    <span ng-hide= "showdetails">
 							<div class="container" style="float:left;">
 				        <div class="card" style="float:left;">
 							    <div class="front">
+
+	    <!-- <div class= "albumartcss" ng-style="randalbumart()"> his is cool devs </div>  -->
+
+<!--  <div class= "albumartcss" ng-class="{'background-image':item.alarw}"> this is cool devs </div> 
+ -->
+                <div class= "albumartcss" ng-style="{'background-image':item.alarw}"> * </div> 
 
 
 						           <!-- <button ng-click="edititem(item._id); showdetails = !showdetails; highlight(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'"> Edit </button> -->
@@ -96,13 +104,14 @@
 
 								    <button ng-click="flipbutton($event)" class="htmlbut buttonstyle buttonleft">&#8592 </button> 
 								    <button ng-click="removeitem(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'" class="buttonstyle buttonright"> &#8709 </button>
-	
+
+
+
                     <div class="contentincard">
+
 										  <p> First: {{item.body}} </p> 
-										   <p> Date: {{item.date | date: 'fullDate'}} </p> 
-										   <div ng-repeat="i in item.genres"> 
-		                       Genre: {{i}}
-		                    </div> 
+										  
+										   
 		                  
                     </div>
 
@@ -118,6 +127,10 @@
 				              
 
 										      <p> Second: {{item.tagline}} </p>
+										      <div ng-repeat="i in item.genres"> 
+		                       Genre: {{i}}
+		                    </div>  <br>
+		                     <p> Date: {{item.date | date: 'fullDate'}} </p> 
 										    
 
 									</div> <!--/back -->
@@ -151,6 +164,7 @@
 		  </div>
 		</div>
 
+
 <div class="moo">
 				 	<div ng-repeat="objarray in displayhtml | orderBy: 'date':true">
 				    <span ng-hide= "showdetails">
@@ -159,10 +173,15 @@
 							    <div class="front">
 
 								    <button ng-click="flipbutton($event)" class="htmlbut buttonstyle buttonleft">&#8592 </button> 
-								    <button ng-click="removeitem(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'" class="buttonstyle buttonright"> &#8709 </button>
-	
+								    <button ng-click="removeitem(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'" class="buttonstyle buttonright"> &#8709 </button> 
+
+
+
                     <div class="contentincard">
+
 										  <p> First: {{objarray.body}}</p> 
+
+
 										   <p> Date: {{objarray.date | date: 'fullDate'}} </p> 
 										   <div ng-repeat="i in objarray.genres"> 
 		                       Genre: {{i}}
@@ -193,6 +212,7 @@
 
 
 		      ********search result end
+
 
 </div> <!--/controller-->
 

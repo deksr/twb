@@ -271,8 +271,8 @@ body {
 
 .secondimage{
   position:absolute;
-  z-index:999;
-  top:15px; /* set top value */
+/*  z-index:999;
+*/  top:15px; /* set top value */
   left:840px; /* set left value */
   width:250px;
 }
@@ -330,7 +330,6 @@ body {
 
 .card .front {
   background-color: #F1F2F3;
-
 }
 
 .card .back {
@@ -349,13 +348,25 @@ body {
 
 
 .contentincard{
-   text-align: center;
+  text-align: center;
   font-size: 15px;
   font-family: arial;
   position: absolute;
   top: 10%;
+  line-height: 10%;
+
+/*  background-color: pink;
+*/}
 
 
+.albumartcss{
+  background-color: gold;
+  width: 100%;
+  height: 20%;
+  position: relative;
+  top: 25%;
+ background-repeat: no-repeat;
+  background-size: 100%;
 }
 /******end */
 

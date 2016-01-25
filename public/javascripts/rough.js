@@ -17,6 +17,26 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
 		$http.get('/items/blooms').then(function(response) {
 	    console.log(response.data);
 	    $scope.itemslist = response.data;
+
+      // note: below is for the background image of albumart. Here $scope.itemslist.forEach does the trick and on view you can go with ng-style instead on tehe div. I was getiing an error of 10 digest scrool to see previous way of doing that gave me error. 
+
+      var albumimage= [
+      {'backgroundimage': 'url("/images/albumart/albumart1.jpg")'}, 
+      {'backgroundimage': 'url("/images/albumart/albumart2.jpg")'},
+      {'backgroundimage': 'url("/images/albumart/albumart4.jpg")'},
+      {'backgroundimage':  'url("/images/albumart/albumart5.jpg")'}
+      ]
+
+      function randalbumart(){
+        var artwork = albumimage[Math.floor(Math.random() * albumimage.length)];
+        console.log(artwork.backgroundimage)
+        return artwork.backgroundimage
+      }
+
+      $scope.itemslist.forEach(function(art){
+        art.alarw = randalbumart();
+      })
+
 	  })
 	}
   
@@ -257,11 +277,13 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
   }
 
   // ******** slideshows starts here
-  // note note: loading the window and document. both work. pass $window with $scope and others
+  // note note: loading the window and document. both work. pass $window with $scope and others. same as doucment on load function.
 
   // 1. angular.element(document).ready(function () {
   //   console.log("this works ")
   // });
+
+    // wfk%%kjhqehr< kee this it is for slides> qke######k
 
   angular.element($window).bind('load', function() {
     console.log("hay hay")
@@ -284,6 +306,29 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
     $interval(slideimage, 3000)
 
   });
+
+
+    // wfkwkqr%%%%%%%%%kjhqehrqke######rhqkehrfk
+
+  // adding album images. note:  this method works but it is wrong. this metod gives me 10 digest iteration errors as objects are getting created each time when I refresh a page meaning when angular checks back it says they dont match from what object it previously had on the dom.  Had another problem, this was inheriting time intervals. created new method in pageupload funcction.
+
+  // $scope.randalbumart = function(){
+
+  //   var albumimage = ['url("/images/albumart/albumart1.jpg")', 'url("/images/albumart/albumart2.jpg")', 'url("/images/albumart/albumart4.jpg")', 'url("/images/albumart/albumart5.jpg")']
+
+
+  //   var artwork = albumimage[Math.floor(Math.random() * albumimage.length)];
+  //   // console.log(artwork) 
+
+  //   return {"background-image" : artwork,
+  //           "background-repeat": "no-repeat",
+  //           "background-size": "100%",
+  //           "background-position": "center"
+  //         } 
+  // }
+
+
+
 
 });
 
