@@ -9,7 +9,7 @@ var allresults = [];
 
 
 myapp.controller('ajscontroller', function($scope, $http, $document, $window, $interval){
-  $scope.title = "A hidden message to all: We are all diamonds taking shape.";
+  $scope.title = "A message to all: We are all diamonds taking shape.";
 
 
 	var pageload= function(){
@@ -40,7 +40,7 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
 	  })
 	}
   
-	pageload();
+	pageload(); // when the page first loads this is called 
 
 
   // post request
@@ -49,7 +49,7 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
     $http.post('/items/blooms', $scope.itemInputBox).then(function(response){
       $scope.itemInputBox = {}; 
       // console.log(response.data)
-      pageload();
+      pageload(); //after a post this is called to load the page
     })
   }
 
@@ -183,7 +183,7 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
 
 
 
- $scope.autoform =  function(){
+  $scope.autoform =  function(){
     console.log("one key pressed")
     // when pressed in the input form, show the orange box
     var gotacf =  angular.element($document[0].getElementsByClassName('dormantautos'))
@@ -220,6 +220,7 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
       console.log(response.data);
       $scope.allduplicates = response.data;
 
+
       var experiment  = response.data
       for (i = 0; i < experiment.length; i++) { 
         console.log(experiment[i].genres)
@@ -250,6 +251,7 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
         console.log($scope.searchboxterm.genres);
           $http.get('/items/search?', {params:{"genres":$scope.searchboxterm.genres}}).then(function(response){
             $scope.searchresults = response.data
+
             var storeddata = $scope.searchresults
             storeinarray.push(storeddata)
             console.log(storeinarray)
@@ -259,6 +261,25 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
              console.log(eachitem)
             $scope.displayhtml = eachitem
             });
+
+
+            // displaying the ablbum art
+           var albumimage= [
+           {'backgroundimage': 'url("/images/albumart/albumart1.jpg")'}, 
+           {'backgroundimage': 'url("/images/albumart/albumart2.jpg")'},
+           {'backgroundimage': 'url("/images/albumart/albumart4.jpg")'},
+           {'backgroundimage':  'url("/images/albumart/albumart5.jpg")'}]
+
+            function randalbumart(){
+              var artwork = albumimage[Math.floor(Math.random() * albumimage.length)];
+              console.log(artwork.backgroundimage)
+              return artwork.backgroundimage
+            }
+
+            $scope.displayhtml.forEach(function(art){
+              art.alarw = randalbumart();
+            })
+
 
             // once the search is done remove the orange searchbox 
             var gotacf =  angular.element($document[0].getElementsByClassName('dormantautos'))
@@ -270,11 +291,22 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
 
             $scope.wordsvanish = true;
             $scope.searchboxterm = {}; //clear the search tab
+
           })
         }
       }
     })
   }
+
+     $scope.hide = function(){
+      $scope.hidden= true 
+      $scope.searchresult=  true;
+    }
+
+    $scope.showdef= function(){
+      $scope.hidden = false;
+      $scope.searchresult=  false;
+    }
 
   // ******** slideshows starts here
   // note note: loading the window and document. both work. pass $window with $scope and others. same as doucment on load function.
@@ -327,6 +359,9 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
   //         } 
   // }
 
+
+
+       // to hide and show**************
 
 
 

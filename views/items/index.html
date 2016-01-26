@@ -21,7 +21,7 @@
 
 
 	  <div class="auotosearch">
-			<input class="searchbox" placeholder="Search..." ng-model="searchboxterm.genres" ng-keypress="searchthis($event)" ng-click="autoform()" ng-mouseleave="mouseleft($event)"> 
+			<input class="searchbox" placeholder="Search..." ng-model="searchboxterm.genres" ng-keypress="searchthis($event)" ng-click="autoform(); hide()" ng-mouseleave="mouseleft($event)"> 
 			<div class="dormantautos" ng-mousemove="mousemoveaction($event)" ng-mouseleave="mouseleft($event)"> <!--orange box here -->
 	      <div ng-repeat="word in acb" class=" autowords"> <!-- bring auto words inside-->
 
@@ -78,13 +78,15 @@
 <!-- 	***********slideshow + 3d animation start**************--> 
 
  <i> {{title}} </i> <br> <br>
-<div class= "slideimages" >  <!-- this is the white background -->
-	<div class= "acontainer"> <!-- this has images embeded within it -->
-  </div>
+<div class= "slideimages"  ng-show="true" ng-hide="hidden">  <!-- this is the white background alsos for-->
+	<div class = "shownandhide" > <!-- this is for hide and show functionality-->
+
+		<div class= "acontainer"> <!-- this has slide show images embeded within it -->
+	  </div>
 
 
 
-		<div class="moo">
+		<div class="moo">  <!-- these are flip cards  -->
 
 				 	<div ng-repeat="item in itemslist | orderBy: 'date':true | limitTo:6">
 				    <span ng-hide= "showdetails">
@@ -140,6 +142,8 @@
 				  </div> <!--/item in itemslist-->
 		    </div> <!--/moo -->
 
+   </div> <!--/shownandhide -->
+
 </div>
 <!-- 	***********slideshow + ed animation end ********-->
 
@@ -154,7 +158,7 @@
 				</span>  -->
 
 
-	     ********search result 
+	  <!--    ********search result 
 	  <p> {{controllermessage}} </p>
 
 		<div ng-repeat="objarray in displayhtml">
@@ -162,18 +166,24 @@
 			<div ng-repeat="obj in objarray">
 				{{obj.genres}}
 		  </div>
-		</div>
+		</div> -->
 
-
-<div class="moo">
-				 	<div ng-repeat="objarray in displayhtml | orderBy: 'date':true">
+<div class = "resultwrapper" ng-hide="true" ng-show="searchresult"> 
+<div class="forhidingandshow" > 
+	<button ng-click="showdef()" class="backmain"> back to main page </button>
+<div class="resultmoo">
+				 	<div ng-repeat="objarray in displayhtml | orderBy: 'date':true | limitTo:9">
 				    <span ng-hide= "showdetails">
 							<div class="container" style="float:left;">
 				        <div class="card" style="float:left;">
 							    <div class="front">
 
+							    	<div class= "albumartcss" ng-style="{'background-image':objarray.alarw}"> * </div> 
+
+
 								    <button ng-click="flipbutton($event)" class="htmlbut buttonstyle buttonleft">&#8592 </button> 
 								    <button ng-click="removeitem(item._id)" ng-disabled="highlightbutton && highlightbutton != '{{editdataid}}'" class="buttonstyle buttonright"> &#8709 </button> 
+
 
 
 
@@ -209,12 +219,12 @@
 						</span>
 				  </div> <!--/item in itemslist-->
 		    </div> <!--/moo -->
+		  </div> <!--/forhidingandshow --> 
+		</div> <!--/forhidingandshow --> 
 
 
-		      ********search result end
 
-
-</div> <!--/controller-->
+</div> <!--/resultwrapper-->
 
 
 

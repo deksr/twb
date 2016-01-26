@@ -3,8 +3,6 @@ a {
   color: #00B7FF;
 }
 
-
-
 /*jaxload*/
 .postit{
 	background-color: yellow;
@@ -13,19 +11,15 @@ a {
 }
 
 
-
-
-/****** items list */
+/****** items controller related*************/
 body { 
  background-color: #F8F8F8 ; 
  margin:0;
  padding:0;
 }
 
-/*********** navabar start*******
-*/
-
-
+/*********** navabar start********/
+   /*********** white navabar and logo********/
 
 .whitenavbar{
   position: fixed;
@@ -46,23 +40,14 @@ body {
   left: 30px;
   top: 25px;
 }
-
-
-/*.magnify{
-  width: 50px;
-  position: absolute;
-  left: 25%;
-  top: 47%; 
-  float: left;
-}*/
+    /*********** search in white navabar ********/
 
 .auotosearch{
   position: relative;
   width: 20px;
   height: 200px;
   left: 30%;
-/*  background-color: grey;
-*/}
+}
 
 .autosearchbox{
   position: absolute;
@@ -76,8 +61,7 @@ body {
   overflow: auto;
   font-family: arial;
   font-size: 20px;
-/*  transition-duration: 3s;
-*/}
+}
 
 
 .searchbox{
@@ -107,13 +91,7 @@ body {
 }
 
 
-
-
-
-
-
-
-
+    /*********** add functionality in white navabar ********/
 
 .addbox{
   width: 60px;
@@ -127,7 +105,6 @@ body {
 
 }
 
-
 .addbutton{
   font-size: 40px;
   vertical-align: middle;
@@ -137,12 +114,10 @@ body {
   color: #F95D0F;
 }
 
+/*********** navabar ends *******
 
 
-/*********** navabar end*******
-
-
-/*modal related*******/
+/************modal related*******/
 
 .modalbox{
   width: 100%;
@@ -234,17 +209,17 @@ body {
 }
 
 
-/*slideshow related************/
+/******white background + slide within it starts************/
 
 .slideimages{
   position: relative;
   width: 1080px;
   height: 1440px;
-  top: 80px;
+  top: 77px;
   left: 100px;
   background-color: white;
   box-shadow: -1px 0px 17px -3px rgb(208,208,208);
-}
+} /*<!-- this is the white background --> */
 
 
 .acontainer{
@@ -258,7 +233,6 @@ body {
   background-repeat: no-repeat;
   background-size: 100%;
   transition: all .8s ease-in-out;
-
 }
 
 .firstimage{
@@ -277,13 +251,58 @@ body {
   width:250px;
 }
 
-/************slide end*/
+/******white background + slide within it ends******/
 
 
 
 
+/*****show and hide functionality for search items starts*/
 
-/*card animation related**** */
+/*.shownandhide{
+  position: relative;
+  background-color: pink;
+  width: 1080px;
+  height: 1430px;
+  top:0.1%;
+  left: 0.1%;
+}
+*/
+.resultwrapper{
+  width: 100%;
+  height: 1430px;   
+  background-color:#F8F8F8; 
+  position: relative;
+} 
+
+.forhidingandshow{
+  width: 85.5%;
+/*  height: 1000px;*/
+  height: 100%;
+  background-color: white; 
+  position: absolute;
+  left: 8%;
+  top: 3%;  
+  box-shadow: -1px 0px 17px -3px rgb(208,208,208);
+} /*<!-- this is the white background --> */
+
+
+.backmain{
+  position: absolute;
+  left: 8%;
+  top: 1%;
+} /*<!-- this is button --> */
+
+.resultmoo{
+  position: absolute;
+  width: 100%;
+  top: 3%;
+  margin:0;
+}
+/*****show and hide functionality for search items ends*/
+
+
+
+/*********card animation related starts here**** */
 
 .moo{
   position: relative;
@@ -354,25 +373,24 @@ body {
   position: absolute;
   top: 10%;
   line-height: 10%;
-
 /*  background-color: pink;
 */}
 
 
 .albumartcss{
-  background-color: gold;
-  width: 100%;
+/*  background-color: gold;
+*/  width: 100%;
   height: 20%;
   position: relative;
   top: 25%;
- background-repeat: no-repeat;
+  background-repeat: no-repeat;
   background-size: 100%;
 }
-/******end */
+/*********card animation related ends here**** */
 
 
 
-/*svg files*/
+/*******svg files start******/
 
 svg{
 /*  background-color: #C0C0C0 ;
@@ -382,8 +400,29 @@ svg{
 }
 
 
+   /*spinning animation for the tape start*/
 
-/*buttonstyles*/
+@-webkit-keyframes rotating {
+  from{
+    -webkit-transform: rotate(0deg);
+  }
+  to{
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.spininfinity {
+  -webkit-animation: rotating 10s linear infinite;
+}
+
+   /*spinning animation for the tape end*/
+
+
+
+/*******svg files ends*******/
+
+
+/*******buttonstyles starts*/
 
 .buttonstyle {
   background-color: transparent;
@@ -417,20 +456,9 @@ svg{
   top: 5px; 
 }
 
-/*spinning animation for the tape*/
 
-@-webkit-keyframes rotating {
-  from{
-    -webkit-transform: rotate(0deg);
-  }
-  to{
-    -webkit-transform: rotate(360deg);
-  }
-}
+/*******buttonstyles end*/
 
-.spininfinity {
-  -webkit-animation: rotating 10s linear infinite;
-}
 
 
 
