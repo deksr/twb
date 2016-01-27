@@ -114,6 +114,29 @@ body {
   color: #F95D0F;
 }
 
+
+.backbox{
+  background-color: #D0D0D0;
+  width: 60px;
+  height: 60px;
+  border: none;
+  cursor: pointer; 
+  cursor: hand;  
+  position: absolute;
+  top:25%;
+  left:93%;
+/*  text-align: center;
+*/
+
+}
+
+.backstyle{
+color: #F95D0F;
+font-size: 40px;
+position: absolute;
+bottom: 10%;
+left:15%;
+}
 /*********** navabar ends *******
 
 
@@ -286,11 +309,11 @@ body {
 } /*<!-- this is the white background --> */
 
 
-.backmain{
+/*.backmain{
   position: absolute;
   left: 8%;
   top: 1%;
-} /*<!-- this is button --> */
+}*/ /*<!-- this is button --> */
 
 .resultmoo{
   position: absolute;

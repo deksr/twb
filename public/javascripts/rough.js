@@ -298,6 +298,10 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
     })
   }
 
+  
+
+// below is for show and hide of the search result.
+
      $scope.hide = function(){
       $scope.hidden= true 
       $scope.searchresult=  true;
@@ -307,6 +311,20 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
       $scope.hidden = false;
       $scope.searchresult=  false;
     }
+
+ // this is when you click the search box, add button hides and back button shows up. If you click the back button, add shows up. 
+
+  $scope.one = function(){
+    $scope.hideone = true;
+    $scope.showtwo = true;
+  }
+
+  $scope.two = function(){
+    $scope.hideone = false; 
+    $scope.showtwo = false; 
+
+  }
+         
 
   // ******** slideshows starts here
   // note note: loading the window and document. both work. pass $window with $scope and others. same as doucment on load function.
