@@ -21,7 +21,7 @@
 
 
 	  <div class="auotosearch">
-			<input class="searchbox" placeholder="Search..." ng-model="searchboxterm.genres" ng-keypress="searchthis($event)" ng-click="autoform(); hide()" ng-mouseleave="mouseleft($event)"> 
+			<input class="searchbox" placeholder="Search..." ng-model="searchboxterm.genres" ng-keypress="searchthis($event)" ng-click="autoform(); hide(); one();" ng-mouseleave="mouseleft($event)"> 
 			<div class="dormantautos" ng-mousemove="mousemoveaction($event)" ng-mouseleave="mouseleft($event)"> <!--orange box here -->
 	      <div ng-repeat="word in acb" class=" autowords"> <!-- bring auto words inside-->
 
@@ -32,8 +32,10 @@
 
 
 	<div class = "addbox"> 
-	<span class="addbutton clickforadd" ng-click='showaddmodel()'> + </span>
+	<span class="addbutton clickforadd" id= "clicktoslide" ng-click='showaddmodel()' ng-hide="hideone"> + </span>
 	</div>  
+
+	<button ng-click="showdef(); two()" class="backmain backbox" ng-hide="true" ng-show="showtwo"> <div class="backstyle">&#8592 </div> </button>
 	  </div>
 
 
@@ -170,7 +172,7 @@
 
 <div class = "resultwrapper" ng-hide="true" ng-show="searchresult"> 
 <div class="forhidingandshow" > 
-	<button ng-click="showdef()" class="backmain"> back to main page </button>
+
 <div class="resultmoo">
 				 	<div ng-repeat="objarray in displayhtml | orderBy: 'date':true | limitTo:9">
 				    <span ng-hide= "showdetails">
@@ -231,6 +233,9 @@
 <script src="/javascripts/angular.js"> </script>
 
 <script src="/javascripts/rough.js"> </script>
+
+<script src="/javascripts/scrollme.js"> </script>
+
 
 
 
