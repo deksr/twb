@@ -1,0 +1,66 @@
+
+a {
+  color: #00B7FF;
+}
+
+/*jaxload*/
+.postit{
+/*	background-color: yellow;
+*/	width: 1000px;
+	font-size: 12px;
+	font-family: 'Noto Sans', sans-serif;
+
+}
+
+
+/****** items controller related*************/
+body { 
+ background-color: #F8F8F8 ; 
+ margin:0;
+ padding:0;
+}
+
+
+.wrapper{
+  position: relative;
+/*  background-color: orange;
+*/  height: 1000px;
+  padding: 20px;
+}
+
+.wrapper-navabar{
+	position: absolute;
+/*  background-color: pink;
+*/  padding:30px;
+  top: 10%;
+  font-family: 'Noto Sans', sans-serif;
+  width: 1100px;
+
+}
+
+.wrapper-form{
+	position: absolute;
+	top: 200px;
+/*	background-color: yellow;
+*/}
+
+.wrapper-list{
+	position: relative;
+	top:320px;
+	margin: 10px;
+	height: 200px;
+	padding: 20px;
+}
+
+.commentform{
+	position: absolute;
+	padding: 20px;
+	margin: 10px;
+/*	background-color: teal;
+*/
+}
+
+.del-style{
+position: absolute;
+left: 1130px;
+}

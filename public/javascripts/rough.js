@@ -20,11 +20,14 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
 
       // note: below is for the background image of albumart. Here $scope.itemslist.forEach does the trick and on view you can go with ng-style instead on tehe div. I was getiing an error of 10 digest scrool to see previous way of doing that gave me error. 
 
-      var albumimage= [
-      {'backgroundimage': 'url("/images/albumart/albumart1.jpg")'}, 
-      {'backgroundimage': 'url("/images/albumart/albumart2.jpg")'},
+      var albumimage= [ 
       {'backgroundimage': 'url("/images/albumart/albumart4.jpg")'},
-      {'backgroundimage':  'url("/images/albumart/albumart5.jpg")'}
+      {'backgroundimage': 'url("/images/albumart/albumart2.jpg")'},
+      {'backgroundimage':  'url("/images/albumart/albumart3.jpg")'},
+      {'backgroundimage':  'url("/images/albumart/albumart6.jpg")'},
+      {'backgroundimage':  'url("/images/albumart/albumart7.jpg")'},
+      {'backgroundimage':  'url("/images/albumart/albumart9.jpg")'}
+     
       ]
 
       function randalbumart(){
@@ -266,7 +269,7 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
             // displaying the ablbum art
            var albumimage= [
            {'backgroundimage': 'url("/images/albumart/albumart1.jpg")'}, 
-           {'backgroundimage': 'url("/images/albumart/albumart2.jpg")'},
+           {'backgroundimage': 'url("/images/albumart/albumart2.svg")'},
            {'backgroundimage': 'url("/images/albumart/albumart4.jpg")'},
            {'backgroundimage':  'url("/images/albumart/albumart5.jpg")'}]
 
@@ -324,7 +327,11 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
     $scope.showtwo = false; 
 
   }
-         
+      
+
+      // below is for hide nad show the nav bar   
+
+
 
   // ******** slideshows starts here
   // note note: loading the window and document. both work. pass $window with $scope and others. same as doucment on load function.
@@ -356,6 +363,8 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
     $interval(slideimage, 3000)
 
   });
+
+
 
 
     // wfkwkqr%%%%%%%%%kjhqehrqke######rhqkehrfk

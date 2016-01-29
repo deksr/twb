@@ -4,25 +4,52 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
-	<link rel="stylesheet" href="../stylesheets/style.css">
+
+		<link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+
+
+<link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+
+
+ 	<link rel="stylesheet" href="../stylesheets/style.css">
+	<link rel="stylesheet" href="../stylesheets/forposts.css">
+
+
+
 </head>
 <body>
+<div class="wrapper"> 
+
+
+<% include ../navbar.html %>
+
+
+
+	<div> 
+	<% include note.html  %>
+
+	</div>
+
 
 <div>
 <% include new.html %>
 </div>
+<hr>
 
+<div class="wrapper-list">
 
 <% posts.forEach( function(post) { %>
 <form name="deletepost" action="/posts/<%=post.id%>" method="post"  > 
-<div class="postit" id="draggable">
-<p><%= post.postname %> </p> 
+<div class="postit">
+<p><%= post.postname %>  
 <input type="hidden" name="_method" value="delete">
-<button type= "submit" class="deleteme"> Delete </button>
+<button type= "submit" class="deleteme btn-xs del-style"> Delete </button> </p>
 </div>
 </form>
 <hr>
 <% }) %>
+
+</div>
 
 
 
@@ -37,6 +64,8 @@
 
 <!--< <script src="../javascripts/dyform.js"> </script>  
 <script data-main="../javascripts/main.js" src="../javascripts/require.js"> </script> //-->
+
+</div>
 
 </body>
 </html>
