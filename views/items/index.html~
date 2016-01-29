@@ -108,29 +108,27 @@
 								</div> <!--/card -->
 							</div> <!--/container-->
 						</span>
-				  </div> <!--/item in itemslist-->
-		    </div> <!--/moo -->
-
-   </div> <!--/shownandhide -->
-
-</div>
-<!-- 	***********slideshow + ed animation end ********-->
+					</div> <!--/item in itemslist-->
+			  </div> <!--/moo -->
+		  </div> <!--/shownandhide -->
+	  </div> <!--/slideimages -->
+	  <!-- 	***********slideshow + ed animation end ********-->
 
 
-	  <br> <br>
-	<!--       <span>
-	      	<div ng-show="showdetails" class="cardesign">
-						<input ng-show="showdetails"  ng-model="itemEditBox.body"> 
-						<input ng-show="showdetails"  ng-model= "itemEditBox.tagline">
-						<button ng-show="showdetails"  ng-click="update()"> Update </button> 
-				</div>
-				</span>  -->
+		<br> <br>
+		<!-- <span>
+		      <div ng-show="showdetails" class="cardesign">
+							<input ng-show="showdetails"  ng-model="itemEditBox.body"> 
+							<input ng-show="showdetails"  ng-model= "itemEditBox.tagline">
+							<button ng-show="showdetails"  ng-click="update()"> Update </button> 
+			</div>
+		</span>  -->
 
 
-	  <!--    ********search result 
-	  <p> {{controllermessage}} </p>
+		<!--    ********search result 
+		<p> {{controllermessage}} </p>
 
-		<div ng-repeat="objarray in displayhtml">
+	  <div ng-repeat="objarray in displayhtml">
 			{{objarray}}
 			<div ng-repeat="obj in objarray">
 				{{obj.genres}}
@@ -168,19 +166,30 @@
 								</div> <!--/card -->
 							</div> <!--/container-->
 						</span>
-				  </div> <!--/item in itemslist-->
-		    </div> <!--/moo -->
-		  </div> <!--/forhidingandshow --> 
-		</div> <!--/forhidingandshow --> 
+					</div> <!--/item in itemslist-->
+				</div> <!--/moo -->
+			</div> <!--/forhidingandshow --> 
+		</div> <!--/resultwrapper-->
+	  <!--    ********search result  ends-->
 
+<<<<<<< HEAD
 </div> <!--/resultwrapper-->
 
 
+
+<script src="/javascripts/angular.js"> </script>
+
+<script src="/javascripts/rough.js"> </script>
+
+<script src="/javascripts/scrollme.js"> </script>
+
+=======
 	<script src="/javascripts/angular.js"> </script>
 
 	<script src="/javascripts/rough.js"> </script>
 
 	<script src="/javascripts/scrollme.js"> </script>
+>>>>>>> backendwork
 
 	</body>
 </html>
