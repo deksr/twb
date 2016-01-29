@@ -4,11 +4,7 @@ a {
 }
 
 /*jaxload*/
-.postit{
-	background-color: yellow;
-	height: 200px;
-	width: 200px;
-}
+
 
 
 /****** items controller related*************/
@@ -40,26 +36,29 @@ body {
   left: 30px;
   top: 25px;
 }
+
+
     /*********** search in white navabar ********/
 
 .auotosearch{
-  position: relative;
+  position: absolute;
   width: 20px;
   height: 200px;
   left: 30%;
+  top:10%;
 }
 
 .autosearchbox{
   position: absolute;
   width: 502px;
-  height: 100px;
-  background-color: orange;
+  height: 200px;
+  background-color: white;
   top: 34%;
   left: 30%;
   opacity: 0.7;
   border: none;
   overflow: auto;
-  font-family: arial;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 20px;
 }
 
@@ -73,12 +72,11 @@ body {
   text-indent: 50px;
   border-style: none;
   background-color: transparent;
-  border-bottom: solid;
+  border-bottom: solid grey;
   border-width: 2px;
   font-size: 20px;
   float: left;
   background: url(/images/magnify.svg) no-repeat left 0px center;
-
 }
 
 .searchbox:focus {
@@ -91,12 +89,37 @@ body {
 }
 
 
+hr{
+  border-top: 1px dotted #8c8b8b;
+}
+
     /*********** add functionality in white navabar ********/
+
+
+.feedbacks{
+  position: relative;
+  left:87%;
+  top:25%;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 12px;
+  background-color: #F1F2F3;
+  width: 60px;
+  height: 60px;
+}
+
+.pencilimage{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 10px;
+  left: 9px;
+
+}
 
 .addbox{
   width: 60px;
   height: 60px;
-  background-color:   #D0D0D0;
+  background-color:   #F1F2F3;
   position: absolute;
   top: 25%;
   left: 93%;
@@ -127,7 +150,6 @@ body {
   left:93%;
 /*  text-align: center;
 */
-
 }
 
 .backstyle{
@@ -192,7 +214,7 @@ left:15%;
   width: 100%;
   margin-top: 10%;
   text-align: center;
-  font-family: arial;
+  font-family: 'Noto Sans', sans-serif;
   color: white;
 
 }
@@ -397,7 +419,49 @@ left:15%;
   top: 10%;
   line-height: 10%;
 /*  background-color: pink;
-*/}
+*/
+  font-family: 'Noto Sans', sans-serif;
+  color:  #8c8c8c;
+
+}
+
+
+.content-behind-card{
+  color:green;
+  position: absolute;
+  top: 30px;
+  margin: 12px;
+  text-align: center;
+  font-family: 'Noto Sans', sans-serif;
+
+}
+
+.item-date{
+position: absolute;
+font-size: 10px;
+top: 260px;
+color: grey;
+}
+
+.item-genre{
+position: absolute;
+font-size: 10px;
+top: 250px;
+right: 133px;
+color: grey;
+}
+
+.item-description{
+position: absolute;
+font-size: 12px;
+top: 10px;
+left: 5px;
+color:grey;
+width: 250px;
+text-align: justify;
+
+
+}
 
 
 .albumartcss{
@@ -409,6 +473,9 @@ left:15%;
   background-repeat: no-repeat;
   background-size: 100%;
 }
+
+
+
 /*********card animation related ends here**** */
 
 
@@ -465,18 +532,42 @@ svg{
   position:absolute;
   left: 12px;
   top: 5px;
+  color: grey;
 }
 
 .buttonright{
   position:absolute;
   right: 12px;
   top: 5px;
+  color: grey;
+
 }
 
 .backbuttonstyle{
   position:absolute;
   right: 10px;
   top: 5px; 
+}
+
+
+.hover-flip{
+  position: absolute;
+  left: 60px;
+  top: 18px;
+  font-family: 'Noto Sans', sans-serif;
+  font-size:10px;
+  color:grey;
+}
+
+.hover-del{
+  position: absolute;
+  left: 199px;
+  top: 18px;
+  font-family: 'Noto Sans', sans-serif;
+  font-size:10px;
+  color: grey;
+
+
 }
 
 

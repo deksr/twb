@@ -15,7 +15,7 @@ console.log("this is scrolle me loaded")
 
 	window.addEventListener("scroll", function(event) {
 		console.log(this.scrollY)
-		if (this.scrollY > 873.6){
+		if (this.scrollY > 290.6){
 			clearTimeout(scrolldelay);
 		}
 	})

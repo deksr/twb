@@ -54,7 +54,10 @@ $(document).ready(function() {
 	   console.log(data)
 		 return false; 
 	})
-		// $(this).ajaxStop(function(){ window.location.reload(); });
+
+      // sweet!!! doublejaxing's refresh is here
+		 $(this).ajaxStop(function(){ window.location.reload(); });
+		 ///
 
 	$('.deleteme').on('click', function(){ 
    alert("Are you sure?")
