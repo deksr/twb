@@ -1,10 +1,8 @@
 
+
 a {
   color: #00B7FF;
 }
-
-/*jaxload*/
-
 
 
 /****** items controller related*************/
@@ -85,7 +83,6 @@ body {
 
 .wordvanishcss{
   display:none;
-
 }
 
 
@@ -113,7 +110,6 @@ hr{
   height: 40px;
   top: 10px;
   left: 9px;
-
 }
 
 .addbox{
@@ -125,7 +121,6 @@ hr{
   left: 93%;
   text-align: center;
   margin: auto
-
 }
 
 .addbutton{
@@ -148,8 +143,6 @@ hr{
   position: absolute;
   top:25%;
   left:93%;
-/*  text-align: center;
-*/
 }
 
 .backstyle{
@@ -167,18 +160,16 @@ left:15%;
 .modalbox{
   width: 100%;
   height: 100%;
-/*  line-height: 200px;
-*/  position: fixed;
+  position: fixed;
   background-color: rgba(0,0,0,0.5);    
- z-index: 11; 
+  z-index: 11; 
 }
 
 .boxinmodal{
   width: 700px;
   height: 400px;
   background-color: grey;
-/*  text-align: center;
-*/  position: absolute;
+  position: absolute;
   top: 20%;
   left: 20%;
 }
@@ -290,8 +281,7 @@ left:15%;
 
 .secondimage{
   position:absolute;
-/*  z-index:999;
-*/  top:15px; /* set top value */
+  top:15px; /* set top value */
   left:840px; /* set left value */
   width:250px;
 }
@@ -331,12 +321,6 @@ left:15%;
 } /*<!-- this is the white background --> */
 
 
-/*.backmain{
-  position: absolute;
-  left: 8%;
-  top: 1%;
-}*/ /*<!-- this is button --> */
-
 .resultmoo{
   position: absolute;
   width: 100%;
@@ -352,8 +336,7 @@ left:15%;
 .moo{
   position: relative;
   top:630px;
-/*  background-color: #E8F7FD;
-*/  width: 100%;
+  width: 100%;
   height: 60%;
 }
 
@@ -361,8 +344,7 @@ left:15%;
 .container {
   width: 300px;
   height: 380px;
-/*  background-color:#280309;
-*/  perspective: 800px;
+  perspective: 800px;
   position: relative;
   margin-top:7px;
   margin-left:25px;
@@ -418,8 +400,6 @@ left:15%;
   position: absolute;
   top: 10%;
   line-height: 10%;
-/*  background-color: pink;
-*/
   font-family: 'Noto Sans', sans-serif;
   color:  #8c8c8c;
 
@@ -433,40 +413,55 @@ left:15%;
   margin: 12px;
   text-align: center;
   font-family: 'Noto Sans', sans-serif;
-
 }
 
 .item-date{
-position: absolute;
-font-size: 10px;
-top: 260px;
-color: grey;
+  position: absolute;
+  font-size: 10px;
+  top: 260px;
+  color: grey;
 }
 
 .item-genre{
-position: absolute;
-font-size: 10px;
-top: 250px;
-right: 133px;
-color: grey;
+  position: absolute;
+  font-size: 10px;
+  top: 250px;
+  right: 133px;
+  color: grey;
 }
 
 .item-description{
-position: absolute;
-font-size: 12px;
-top: 10px;
-left: 5px;
-color:grey;
-width: 250px;
-text-align: justify;
-
-
+  position: absolute;
+  font-size: 12px;
+  top: 10px;
+  left: 5px;
+  color:grey;
+  width: 250px;
+  text-align: justify;
 }
 
+.item-description-back{
+  position: absolute;
+  font-size: 12px;
+  top:50px;
+  margin: 12px;
+  color:grey;
+  width: 250px;
+  text-align: justify;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.item-date-back{
+  position: absolute;
+  font-size: 10px;
+  top: 290px;
+  color: grey;
+  margin: 12px;
+  font-family: 'Noto Sans', sans-serif;
+}
 
 .albumartcss{
-/*  background-color: gold;
-*/  width: 100%;
+  width: 100%;
   height: 20%;
   position: relative;
   top: 25%;
@@ -483,8 +478,7 @@ text-align: justify;
 /*******svg files start******/
 
 svg{
-/*  background-color: #C0C0C0 ;
-*/  position: absolute;
+  position: absolute;
   top: 50px;
   left:0px;
 }
@@ -540,7 +534,6 @@ svg{
   right: 12px;
   top: 5px;
   color: grey;
-
 }
 
 .backbuttonstyle{
@@ -566,18 +559,8 @@ svg{
   font-family: 'Noto Sans', sans-serif;
   font-size:10px;
   color: grey;
-
-
 }
 
 
 /*******buttonstyles end*/
-
-
-
-
-
-
-
-
 

@@ -12,13 +12,14 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
   $scope.title = "A message to all: We are all diamonds taking shape.";
 
 
-	var pageload= function(){
+  var pageload= function(){
    // get request
-		$http.get('/items/blooms').then(function(response) {
-	    console.log(response.data);
-	    $scope.itemslist = response.data;
+    $http.get('/items/blooms').then(function(response) {
+      console.log(response.data);
+      $scope.itemslist = response.data;
 
       // note: below is for the background image of albumart. Here $scope.itemslist.forEach does the trick and on view you can go with ng-style instead on tehe div. I was getiing an error of 10 digest scrool to see previous way of doing that gave me error. 
+
 
       var albumimage= [ 
       {'backgroundimage': 'url("/images/albumart/albumart4.jpg")'},
@@ -40,10 +41,10 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
         art.alarw = randalbumart();
       })
 
-	  })
-	}
+    })
+  }
   
-	pageload(); // when the page first loads this is called 
+  pageload(); // when the page first loads this is called 
 
 
   // post request
@@ -58,10 +59,10 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
 
   // delete request
   $scope.removeitem =  function(oid){
-  	// console.log(oid)
-  	$http.delete('/items/blooms/' + oid).then(function(response){
-  		pageload()
-  	})
+    // console.log(oid)
+    $http.delete('/items/blooms/' + oid).then(function(response){
+      pageload()
+    })
   }
 
   // edit request
@@ -153,7 +154,7 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
     // removeme.removeClass('moon')  
   }
 
-  $scope.flipslipper = function(){
+  $scope.flipsback= function(){
 
    var betpara = angular.element(event.target).parent().parent('.card')
     betpara.addClass('sun');
@@ -267,11 +268,15 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
 
 
             // displaying the ablbum art
-           var albumimage= [
-           {'backgroundimage': 'url("/images/albumart/albumart1.jpg")'}, 
-           {'backgroundimage': 'url("/images/albumart/albumart2.svg")'},
-           {'backgroundimage': 'url("/images/albumart/albumart4.jpg")'},
-           {'backgroundimage':  'url("/images/albumart/albumart5.jpg")'}]
+           var albumimage= [ 
+      {'backgroundimage': 'url("/images/albumart/albumart4.jpg")'},
+      {'backgroundimage': 'url("/images/albumart/albumart2.jpg")'},
+      {'backgroundimage':  'url("/images/albumart/albumart3.jpg")'},
+      {'backgroundimage':  'url("/images/albumart/albumart6.jpg")'},
+      {'backgroundimage':  'url("/images/albumart/albumart7.jpg")'},
+      {'backgroundimage':  'url("/images/albumart/albumart9.jpg")'}
+     
+      ]
 
             function randalbumart(){
               var artwork = albumimage[Math.floor(Math.random() * albumimage.length)];
@@ -393,4 +398,3 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
 
 
 });
-
