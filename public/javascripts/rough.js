@@ -1,4 +1,4 @@
-console.log("rough.js");
+// console.log("rough.js");
 
 var myapp = angular.module('ajs', [])
 var storeinarray = [];

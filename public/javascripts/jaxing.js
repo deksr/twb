@@ -1,4 +1,4 @@
-console.log("jaxing.js")
+// console.log("jaxing.js")
 
 
 $(document).ready(function() { 

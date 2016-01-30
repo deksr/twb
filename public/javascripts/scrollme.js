@@ -1,4 +1,4 @@
-console.log("this is scrolle me loaded")
+// console.log("this is scrolle me loaded")
 
   var scrolldelay;
 

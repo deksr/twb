@@ -11,7 +11,6 @@ var methodOverride = require('method-override');
 // added favicon for favicon error
 var favicon = require('serve-favicon');
 
-// mongoose for mongodb
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/twb');
 var db = mongoose.connection;
@@ -24,7 +23,6 @@ console.log('connection error  :sob(', msg);
 db.once('open', function() {
 console.log('connection established :sweet)');
 });
-
 
 
 
@@ -45,11 +43,6 @@ app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
 // *********** dont touch below
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-
-// note: not using ejs or jade as templates
-// app.set('view engine', 'ejs');
-// I'm setting html as template
-
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
@@ -57,14 +50,14 @@ app.set('view engine', 'html');
 
 
 
-// *****8 above or this **8
+// // *****8 above or this **8
 
-app.set('views', path.join(__dirname, 'views'));
-app.engine('.html', require('ejs').__express);
-app.set('view engine', 'html');
+// app.set('views', path.join(__dirname, 'views'));
+// app.engine('.html', require('ejs').__express);
+// app.set('view engine', 'html');
 
 
-// *********
+// // *********
 
 
 
