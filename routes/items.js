@@ -7,7 +7,6 @@ router.get('/', function(req, res) {
 });
 
 
-// for getting data
 router.get('/blooms', function(req, res) {
   Item.find({}).exec(function(err, items) {
     res.json(items);
@@ -15,7 +14,6 @@ router.get('/blooms', function(req, res) {
 });
 
 
-// for posting data
 router.post('/blooms', function(req, res) {
 	Item.create(req.body, function(err, item) {  
 	    res.json(item)
@@ -23,7 +21,6 @@ router.post('/blooms', function(req, res) {
 });
 
 
-// for deleting data
 router.delete('/blooms/:id', function(req, res) {
   Item.findByIdAndRemove(req.params.id, function(err, doc){
   	res.json(doc)
@@ -32,7 +29,6 @@ router.delete('/blooms/:id', function(req, res) {
 
 
 
-// for editing and updating data
 router.get('/blooms/:id', function(req, res) {
   Item.findById(req.params.id, function(err, item){
   res.json(item)
@@ -58,7 +54,6 @@ router.put('/blooms/:id', function(req, res) {
 });
 
 
-// ******** search functionality for the searchbox
 
 router.get('/search?/', function(req, res) {
   Item.find({genres: new RegExp(req.query.genres, "i")},function(err, items) {

@@ -7,12 +7,10 @@ var dupesinarray = [];
 var allresults = [];
 
 
-
 myapp.controller('ajscontroller', function($scope, $http, $document, $window, $interval){
-  $scope.title = "A message to all: We are all diamonds taking shape.";
+  $scope.title = "music";
 
   var pageload= function(){
-   // get request
     $http.get('/items/blooms').then(function(response) {
       $scope.itemslist = response.data;
 
@@ -40,7 +38,6 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
   pageload(); 
 
 
-  // post request
   $scope.additem =  function(){
     $http.post('/items/blooms', $scope.itemInputBox).then(function(response){
       $scope.itemInputBox = {}; 
@@ -48,14 +45,12 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
     })
   }
 
-  // delete request
   $scope.removeitem =  function(oid){
     $http.delete('/items/blooms/' + oid).then(function(response){
       pageload()
     })
   }
 
-  // edit request
   $scope.edititem =  function(oid){
     $http.get('/items/blooms/' + oid).then(function(response){
       $scope.fulldbobject = response.data 
@@ -75,7 +70,7 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
     })
   }
 
-  // *********allflips for dom css and jqlite*******
+  // ***************
   $scope.flipbutton = function(event){ 
     var getpara = angular.element(event.target).parent().parent('.card')
     getpara.addClass('sun');
@@ -94,7 +89,7 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
   }
 
 
-  // *******show and hide for adding form in dom******
+  // *************
   $scope.showaddmodel =  function(){
     $scope.showingaddmodel = true;
     var gotdome =  angular.element($document[0].getElementsByClassName('modalbox'))
@@ -105,21 +100,17 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
     var gotdome =  angular.element($document[0].getElementsByClassName('modalbox'))
     gotdome.addClass('vanishmodal');
   }
-   // *******keypress event for the autocomplete form in dom******
 
 
-
-   // *******search functionality******
+   // *************
   $scope.autoform =  function(){
-    // when pressed in the input form, show the orange box
     var gotacf =  angular.element($document[0].getElementsByClassName('dormantautos'))
     gotacf.addClass('autosearchbox')  
 
-    // this again diplays the word in the searchbox
     var reactivatedom =  angular.element($document[0].getElementsByClassName('autowords'))
     reactivatedom.removeClass('wordvanishcss')
    
-    // scenarios 1: if cursor moved outside the input field, autoform and the autofill words should hide 
+   
     $scope.mouseleft = function(){
       var gotdome =  angular.element($document[0].getElementsByClassName('dormantautos'))
       gotacf.removeClass('autosearchbox')
@@ -128,8 +119,7 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
       autoword.addClass('wordvanishcss')
     }
 
-
-    // scenarios: if cursor moved on the orange box, autoform and the autofill words should display
+ 
     $scope.mousemoveaction = function(){
       var gotacf =  angular.element($document[0].getElementsByClassName('dormantautos'))
       gotacf.addClass('autosearchbox') 
@@ -138,7 +128,6 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
      reactivatedom.removeClass('wordvanishcss')
     }
 
-    // when you press one letter, bring in the data to display on the orange box
     $http.get('/items/blooms').then(function(response) {
       $scope.allduplicates = response.data;
 
@@ -147,21 +136,19 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
       for (i = 0; i < experiment.length; i++) { 
         duplicategenre.push(experiment[i].genres)
       }
-       // array containing arrays is sent into one arras with strings
       for (i = 0; i < duplicategenre.length; i++) { 
         var dupes = duplicategenre[i];
         for(var j = 0; j < dupes.length; j++) {
           dupesinarray.push(dupes[j])
         } 
       }
-     // to find the duplicates in the final array: 
       var a = dupesinarray.sort();
       a.filter( function(v,i,o){
         if(i>=0 && v!==o[i-1])
         allresults.push(v)
       }); 
 
-      $scope.acb =  allresults // display the auto result inside the orange box
+      $scope.acb =  allresults 
       $scope.searchthis =  function(enterkey){
         if (enterkey.which === 13){
           $http.get('/items/search?', {params:{"genres":$scope.searchboxterm.genres}}).then(function(response){
@@ -170,12 +157,10 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
             var storeddata = $scope.searchresults
             storeinarray.push(storeddata)
 
-            // getting search result to display on html
             angular.forEach(storeinarray, function(eachitem) {
             $scope.displayhtml = eachitem
             });
 
-            // displaying the ablbum art
            var albumimage= [ 
       {'backgroundimage': 'url("/images/albumart/albumart4.jpg")'},
       {'backgroundimage': 'url("/images/albumart/albumart2.jpg")'},
@@ -194,11 +179,9 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
               art.alarw = randalbumart();
             })
 
-            // once the search is done remove the orange searchbox 
             var gotacf =  angular.element($document[0].getElementsByClassName('dormantautos'))
             gotacf.removeClass('autosearchbox')
 
-            // and then remove displayed words 
             var autoword =  angular.element($document[0].getElementsByClassName('autowords'))
             autoword.addClass('wordvanishcss')
 
@@ -211,9 +194,8 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
     })
   }
 
-  
 
-// below is for show and hide of the search result.
+// *****************.
 
      $scope.hide = function(){
       $scope.hidden= true 
@@ -224,8 +206,7 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
       $scope.hidden = false;
       $scope.searchresult=  false;
     }
-
- // this is when you click the search box, add button hides and back button shows up. If you click the back button, add shows up. 
+// ************* 
 
   $scope.one = function(){
     $scope.hideone = true;
@@ -238,7 +219,7 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
   }
       
 
-  // ******** slideshows starts here
+  // ******** 
   angular.element($window).bind('load', function() {
     var counter = 0
     var images  = ['url("/images/imageone.jpg")', 'url("/images/imagetwo.jpg")', 'url("/images/imageone.jpg")' ]
@@ -253,7 +234,7 @@ myapp.controller('ajscontroller', function($scope, $http, $document, $window, $i
     };
     $interval(slideimage, 3000)
   });
-   // ******** slideshows ends here
+   // ******** 
 
 
 });

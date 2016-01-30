@@ -1,2 +1,2 @@
-// console.log("this is main.js for require.js")
+console.log("this is main.js for require.js")
 

@@ -13,14 +13,12 @@ router.get('/', function(req, res) {
 
 
 
-// for posting data
 router.post('/jupiter', function(req, res) {
  Post.create(req.body, function(err, post) {
 res.json(post)
 });
 })
 
-// for deleting data
 router.delete('/:id', function(req, res) {
 	Post.findByIdAndRemove(req.params.id, function(err) {
 	  res.redirect('/posts');
@@ -35,7 +33,6 @@ router.get('/doublejax', function(req, res) {
 });
 
 
-// forsearch  ***************************
 
 router.get('/search?/', function(req, res) {
   Post.find({postname: new RegExp(req.query.postname, "i")},function(err, posts) {

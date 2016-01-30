@@ -10,12 +10,9 @@ $(document).ready(function() {
     var data={}
 
     form.find('[name]').each(function(index, value){
-	    // console.log(value)
 	    var inputbox = $(this);
 	    var name = inputbox.attr('name');
 	    var value = inputbox.val();
-	    // console.log(name)
-	    // console.log(value)
 	    data[name]=value
     })
 
@@ -33,31 +30,21 @@ $(document).ready(function() {
 					dataType: 'JSON',
 				})
 				.done(function(response) {
-					console.log("success in getting");
-					console.log(response);
 					//bookmark-come back later
 				})
 				.fail(function() {
-					console.log("error in getting");
 				})
 				.always(function() {
-					console.log("completed getting");
 				});	
 		})
 		.fail(function() {
-			console.log("error in posting");
 		})
 		.always(function() {
-			console.log("completed posting");
 		});
-
-	   console.log(data)
 		 return false; 
 	})
 
-      // sweet!!! doublejaxing's refresh is here
 		 $(this).ajaxStop(function(){ window.location.reload(); });
-		 ///
 
 	$('.deleteme').on('click', function(){ 
    alert("Are you sure?")
